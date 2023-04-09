@@ -8,6 +8,7 @@ import './App.css';
 
 const Layout = lazy(() => import('./components/Layout'));
 const LandingPage = lazy(() => import('./pages/LandingPage'));
+const AuthPage = lazy(() => import('./pages/AuthPage'));
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/auth',
-    element: <div>auth</div>,
+    element: <AuthPage />,
   },
   {
     path: '/',
