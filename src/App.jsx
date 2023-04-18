@@ -9,6 +9,7 @@ import './App.css';
 const Layout = lazy(() => import('./components/Layout'));
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const AuthPage = lazy(() => import('./pages/AuthPage'));
+const MainPage = lazy(() => import('./pages/MainPage'));
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     children: [
+      {
+        path: '/',
+        element: <MainPage />,
+      },
       {
         path: '/users/:id',
         element: <div>user-page</div>,

@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 
 import { Box } from '@mui/material';
 
-import AuthForm from '../../components/AuthForm';
+import { AuthForm } from '../../components';
+import { authBoxStyle } from './constants';
 
 function AuthPage() {
   const navigate = useNavigate();
@@ -16,16 +17,7 @@ function AuthPage() {
   }, [user]);
 
   return (
-    <Box sx={
-      {
-        display: 'flex',
-        alignItems: 'center',
-        minHeight: '100vh',
-        justifyContent: 'center',
-        backgroundColor: '#e7f0ff',
-      }
-    }
-    >
+    <Box sx={authBoxStyle}>
       <div>AuthPage</div>
       <AuthForm />
     </Box>

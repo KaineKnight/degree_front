@@ -10,15 +10,19 @@ import {
   CircularProgress,
   Typography,
 } from '@mui/material';
+import LoginIcon from '@mui/icons-material/Login';
 
 import { authRequest } from '../../redux/actions/authActions';
 import FormTextField from '../FormTextField';
 
 import {
+  BlueButton,
   LOGIN,
   REGISTRATION,
   SIGN_UP,
   SWITCH_TO,
+  authFormBoxStyle,
+  authHeaderStyle,
   initialValues,
   loginFields,
   loginValidationSchema,
@@ -43,35 +47,8 @@ function AuthForm({ isRegisterButton }) {
   const formFields = isRegisterForm ? signUpFields : loginFields;
 
   return (
-    <Box sx={
-      {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        bgcolor: 'background.paper',
-        padding: '10px 40px',
-        boxShadow: '5px 5px 10px #979797',
-        minWidth: '50%',
-        display: 'flex',
-        flexDirection: 'column',
-        maxWidth: '450px',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '5px',
-        backgroundColor: 'white',
-      }
-    }
-    >
-      <Typography
-        variant="h3"
-        sx={
-        {
-          p: '10px',
-          textAlign: 'center',
-        }
-      }
-      >
+    <Box sx={authFormBoxStyle}>
+      <Typography variant="h3" sx={authHeaderStyle}>
         {isRegisterForm ? REGISTRATION : LOGIN}
       </Typography>
       {isLoading && <CircularProgress />}
@@ -97,10 +74,14 @@ function AuthForm({ isRegisterButton }) {
               label={textField.label}
             />
           ))}
-          <Button variant="contained" type="submit">
+          <BlueButton
+            endIcon={<LoginIcon />}
+            variant="contained"
+            type="submit"
+          >
             {isRegisterForm ? SIGN_UP : LOGIN}
-          </Button>
-          <Button type="reset" onClick={switchFormType}>
+          </BlueButton>
+          <Button sx={{ my: 1 }} type="reset" onClick={switchFormType}>
             {SWITCH_TO}
             {isRegisterForm ? LOGIN : SIGN_UP}
           </Button>
@@ -115,7 +96,7 @@ AuthForm.propTypes = {
 };
 
 AuthForm.defaultProps = {
-  isRegisterButton: true,
+  isRegisterButton: false,
 };
 
 export default memo(AuthForm);

@@ -1,5 +1,33 @@
 import * as Yup from 'yup';
 
+import styled from '@emotion/styled';
+import { Button } from '@mui/material';
+
+// styles
+export const authFormBoxStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  bgcolor: 'background.paper',
+  padding: '10px 40px',
+  boxShadow: '5px 5px 10px #979797',
+  minWidth: '20%',
+  display: 'flex',
+  flexDirection: 'column',
+  maxWidth: '450px',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: '5px',
+  backgroundColor: 'white',
+};
+
+export const authHeaderStyle = {
+  p: '10px',
+  textAlign: 'center',
+};
+
+// validation
 export const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
     .trim('No white spaces at start or end!')
@@ -51,7 +79,15 @@ export const signUpFields = [
   ...loginFields,
 ];
 
+// string constants
 export const REGISTRATION = 'Registration';
 export const LOGIN = 'Login';
 export const SWITCH_TO = 'Switch to ';
 export const SIGN_UP = 'SIGN UP';
+
+export const BlueButton = styled(Button)({
+  backgroundColor: '#4365C9',
+  '&:hover': {
+    backgroundColor: '#334A92',
+  },
+});
