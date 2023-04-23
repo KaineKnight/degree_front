@@ -1,8 +1,8 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { RouterProvider } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
 
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, ThemeProvider, createTheme } from '@mui/material';
 
 import './App.css';
 
@@ -41,10 +41,20 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const [themeMode, setThemeMode] = useState('light');
+
+  const theme = createTheme({
+    palette: {
+      mode: themeMode,
+    },
+  });
+
   return (
-    <Suspense fallback={<CircularProgress />}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <ThemeProvider theme={theme}>
+      <Suspense fallback={<CircularProgress />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </ThemeProvider>
   );
 }
 

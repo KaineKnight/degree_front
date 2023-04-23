@@ -44,7 +44,7 @@ const UserBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-function Navbar() {
+function Header() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -91,4 +91,4 @@ function Navbar() {
   );
 }
 
-export default memo(Navbar);
+export default memo(Header);

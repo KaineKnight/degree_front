@@ -1,10 +1,11 @@
 import React, { memo } from 'react';
 import { Outlet } from 'react-router';
+import Header from '../Header';
 
 function Layout() {
   return (
     <>
-      <div>Header</div>
+      <Header />
       <div>
         <Outlet />
       </div>
