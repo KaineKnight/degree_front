@@ -12,6 +12,7 @@ import Hero from './Hero/Hero';
 import CustomButton from './CustomButton';
 import Companies from './Companies';
 import Guide from './Guide';
+import Properties from './Properties';
 
 export {
   AuthForm,
@@ -28,4 +29,5 @@ export {
   CustomButton,
   Companies,
   Guide,
+  Properties,
 };
