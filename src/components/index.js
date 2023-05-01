@@ -8,11 +8,16 @@ import Rightbar from './Rightbar';
 import Sidebar from './Sidebar';
 import Task from './Task';
 import AddButton from './AddButton';
-import Hero from './Hero/Hero';
+import Banner from './Banner';
 import CustomButton from './CustomButton';
 import Companies from './Companies';
 import Guide from './Guide';
 import Properties from './Properties';
+import House from './House';
+import Details from './Details';
+import GetStarted from './GetStarted';
+import Footer from './Footer';
+import MobileMenu from './MobileMenu';
 
 export {
   AuthForm,
@@ -25,9 +30,14 @@ export {
   Sidebar,
   Task,
   AddButton,
-  Hero,
+  Banner,
   CustomButton,
   Companies,
   Guide,
   Properties,
+  House,
+  Details,
+  GetStarted,
+  Footer,
+  MobileMenu,
 };

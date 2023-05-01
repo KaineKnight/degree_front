@@ -1,0 +1,50 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+.search {
+  background-color: white;
+  padding: 0 10px;
+  justify-content: space-between;
+  border-radius: 4px;
+  width: 40%;
+}
+.searchPlaceholder {
+  color: black;
+  width: 100%;
+}
+.userBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  width: 100px;
+  margin-top: calc(2 * 8px);
+  display: block;
+}
+.logoImage {
+  width: 100%;
+}
+.mobileLogo {
+  display: none
+}
+.name {
+  display: block;
+}
+.avatar {
+  height: 40px;
+  width: 40px;
+}
+/* sm */
+@media (max-width: 600px) {
+  .logo {
+    display: none;
+  }
+  .mobileLogo {
+    display: block;
+  }
+  .name {
+    display: none;
+  }
+}

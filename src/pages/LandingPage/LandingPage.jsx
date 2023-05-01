@@ -1,15 +1,29 @@
 import React, { memo } from 'react';
 
+import {
+  Companies,
+  Details,
+  Footer,
+  GetStarted,
+  Guide,
+  Banner,
+  Navbar,
+  Properties,
+} from '../../components';
+
 import styles from './LandingPage.module.css';
-import { Companies, Guide, Hero } from '../../components';
 
 function LandingPage() {
   return (
     <div className={styles.landingPage}>
-      <Hero />
+      <Navbar />
+      <Banner />
       <Companies />
       <Guide />
-      <div>body</div>
+      <Properties />
+      <Details />
+      <GetStarted />
+      <Footer />
     </div>
   );
 }

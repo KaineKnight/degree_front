@@ -1,0 +1,16 @@
+.sidebarBox {
+  flex: 1;
+  padding: calc(2 * 8px);
+  display: block;
+  min-width: 140px;
+}
+
+.menuWrapper {
+  position: fixed;
+}
+
+@media (max-width: 600px) {
+  .sidebarBox {
+    display: none;
+  }
+}

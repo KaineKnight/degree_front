@@ -2,16 +2,16 @@
 
 import { createTheme } from '@mui/material';
 
+const themeMode = 'light';
+
 export const theme = createTheme({
   palette: {
-    main: '#4365C9',
-    light: 'skyblue',
-  // main: '#1760a5',
-  },
-  secondary: {
-    main: '#15c630',
-  },
-  otherColor: {
-    main: '#999',
+    mode: themeMode,
+    primary: {
+      main: '#87A3F7',
+    },
+    background: {
+      default: themeMode === 'light' ? '#E7F0FF' : '#121212',
+    },
   },
 });

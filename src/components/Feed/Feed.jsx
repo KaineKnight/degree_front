@@ -7,7 +7,7 @@ import Task from '../Task';
 
 function Feed() {
   return (
-    <Box bgcolor="pink" flex={4} p={2}>
+    <Box flex={4} p={2}>
       <Task />
       <Task />
       <Task />

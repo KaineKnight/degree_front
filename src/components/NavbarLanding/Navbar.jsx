@@ -1,4 +1,5 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Box,
@@ -12,147 +13,82 @@ import {
   Typography,
 } from '@mui/material';
 import { Home as HomeIcon, Menu as MenuIcon } from '@mui/icons-material';
-import styled from '@emotion/styled';
 
-import logo from '../../assets/images/logo.png';
 import CustomButton from '../CustomButton';
+import { toggleMobileMenu } from '../../redux/actions';
 
-const NavLink = styled(Typography)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: theme.spacing(3),
-  [theme.breakpoints.down('md')]: {
-    display: 'block',
-  },
-}));
-
-const NavbarLinksBox = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: theme.spacing(3),
-  [theme.breakpoints.down('md')]: {
-    display: 'none',
-  },
-}));
-
-const CustomMenuIcon = styled(MenuIcon)(({ theme }) => ({
-  cursor: 'pointer',
-  display: 'none',
-  marginRight: theme.spacing(2),
-  [theme.breakpoints.down('md')]: {
-    display: 'block',
-  },
-}));
-
-const NavbarContainer = styled(Container)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: theme.spacing(5),
-  [theme.breakpoints.down('md')]: {
-    padding: theme.spacing(2),
-  },
-}));
-
-const NavbarLogo = styled('img')(({ theme }) => ({
-  cursor: 'pointer',
-  width: '100px',
-  [theme.breakpoints.down('sm')]: {
-    display: 'none',
-  },
-}));
+import styles from './Navbar.module.css';
+import logo from '../../assets/images/logo.png';
 
 function Navbar() {
-  const [mobileMenu, setMobileMenu] = useState({
-    left: false,
-  });
+  const dispatch = useDispatch();
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (!(
-      event.type === 'keydown'
-      && (event.type === 'Tab' || event.type === 'Shift')
-    )) {
-      setMobileMenu({ ...mobileMenu, [anchor]: open });
-    }
+  const isMobileMenuOpen = useSelector((store) => store.mobileMenu.isOpen);
+
+  const handleMenuClick = () => {
+    dispatch(toggleMobileMenu());
   };
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {['Home', 'Features', 'Services', 'Listed', 'Contact'].map(
-          (text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index === 0 && <HomeIcon />}
-                  {index === 1 && <HomeIcon />}
-                  {index === 2 && <HomeIcon />}
-                  {index === 3 && <HomeIcon />}
-                  {index === 4 && <HomeIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ),
-        )}
-      </List>
-    </Box>
+  const list = (
+    <List>
+      {['Home', 'Features', 'Services', 'Listed', 'Contact'].map(
+        (text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index === 0 && <HomeIcon />}
+                {index === 1 && <HomeIcon />}
+                {index === 2 && <HomeIcon />}
+                {index === 3 && <HomeIcon />}
+                {index === 4 && <HomeIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ),
+      )}
+    </List>
   );
 
   return (
-    <NavbarContainer>
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '2.5rem',
-        }}
-      >
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <CustomMenuIcon onClick={toggleDrawer('left', true)} />
+    <Container className={styles.container}>
+      <Box className={styles.leftMenuBox}>
+        <Box className={styles.menuIconBox}>
+          <MenuIcon className={styles.menuIcon} onClick={handleMenuClick} />
           <Drawer
             anchor="left"
-            open={mobileMenu?.left}
-            onClose={toggleDrawer('left', false)}
+            open={isMobileMenuOpen}
+            onClose={handleMenuClick}
           >
-            {list('left')}
+            <Box
+              sx={{ width: { xs: 200, sm: 250 } }}
+              onClick={handleMenuClick}
+              onKeyDown={handleMenuClick}
+            >
+              {list}
+            </Box>
           </Drawer>
-          <NavbarLogo src={logo} alt="logo" />
+          <img className={styles.logo} src={logo} alt="logo" />
         </Box>
 
-        <NavbarLinksBox>
-          <NavLink variant="body2">Home</NavLink>
-          <NavLink variant="body2">Features</NavLink>
-          <NavLink variant="body2">Services</NavLink>
-          <NavLink variant="body2">Listed</NavLink>
-          <NavLink variant="body2">Contact</NavLink>
-        </NavbarLinksBox>
+        <Box className={styles.linksContainer}>
+          <Typography className={styles.navLink} variant="body2">Home</Typography>
+          <Typography className={styles.navLink} variant="body2">Features</Typography>
+          <Typography className={styles.navLink} variant="body2">Services</Typography>
+          <Typography className={styles.navLink} variant="body2">Listed</Typography>
+          <Typography className={styles.navLink} variant="body2">Contact</Typography>
+        </Box>
       </Box>
 
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '1rem',
-        }}
-      >
-        <NavLink variant="body2">Sign Up</NavLink>
+      <Box className={styles.rightMenuBox}>
+        <Typography className={styles.navLink} variant="body2">Sign Up</Typography>
         <CustomButton
           backgroundColor="#0f1b4c"
           color="#fff"
           buttonText="Register"
         />
       </Box>
-    </NavbarContainer>
+    </Container>
   );
 }
 
