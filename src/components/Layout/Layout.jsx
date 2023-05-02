@@ -28,12 +28,8 @@ function Layout() {
   const theme = createTheme({
     palette: {
       mode: isDarkTheme ? 'dark' : 'light',
-      primary: {
-        main: '#87A3F7',
-      },
-      background: {
-        default: isDarkTheme ? '#121212' : '#E7F0FF',
-      },
+      primary: { main: '#87A3F7' },
+      background: { default: isDarkTheme ? '#121212' : '#E7F0FF' },
     },
   });
   return (

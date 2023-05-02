@@ -2,8 +2,9 @@ import React, { memo } from 'react';
 
 import { Box } from '@mui/material';
 
-import styles from './Sidebar.module.css';
 import MobileMenu from '../MobileMenu';
+
+import styles from './Sidebar.module.css';
 
 function Sidebar() {
   return (

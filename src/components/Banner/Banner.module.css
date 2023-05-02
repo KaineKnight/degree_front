@@ -28,7 +28,7 @@
   margin-top: calc(3 * 8px);
 }
 .boxWrapper {
-  background-color: #e6f0ff;
+  /* background-color: #e6f0ff; */
   min-height: 80vh;
 }
 .title {

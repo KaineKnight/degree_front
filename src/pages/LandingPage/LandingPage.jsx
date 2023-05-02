@@ -9,6 +9,7 @@ import {
   Banner,
   Navbar,
   Properties,
+  AddButton,
 } from '../../components';
 
 import styles from './LandingPage.module.css';
@@ -24,6 +25,7 @@ function LandingPage() {
       <Details />
       <GetStarted />
       <Footer />
+      <AddButton />
     </div>
   );
 }

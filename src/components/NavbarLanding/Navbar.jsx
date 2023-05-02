@@ -77,16 +77,12 @@ function Navbar() {
           <Typography className={styles.navLink} variant="body2">Services</Typography>
           <Typography className={styles.navLink} variant="body2">Listed</Typography>
           <Typography className={styles.navLink} variant="body2">Contact</Typography>
+          <CustomButton backgroundColor="#0f1b4c" color="#fff" buttonText="Track request" />
         </Box>
       </Box>
 
       <Box className={styles.rightMenuBox}>
-        <Typography className={styles.navLink} variant="body2">Sign Up</Typography>
-        <CustomButton
-          backgroundColor="#0f1b4c"
-          color="#fff"
-          buttonText="Register"
-        />
+        <CustomButton backgroundColor="#0f1b4c" color="#fff" buttonText="Send my request" />
       </Box>
     </Container>
   );
