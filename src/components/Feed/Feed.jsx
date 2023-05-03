@@ -7,7 +7,16 @@ import Task from '../Task';
 
 function Feed() {
   return (
-    <Box flex={4} p={2}>
+    <Box
+      flex={4}
+      p={2}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        alignItems: 'center',
+      }}
+    >
       <Task />
       <Task />
       <Task />
