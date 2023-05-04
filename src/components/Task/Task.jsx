@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 
 import {
   Card,
@@ -22,6 +22,10 @@ import {
 } from '@mui/icons-material';
 
 function Task() {
+  const [expanded, setExpand] = useState(false);
+  const handleExpandClick = () => {
+    setExpand(!expanded);
+  };
   return (
     <Card sx={{
       // maxWidth: 600,
@@ -45,6 +49,9 @@ function Task() {
         alt="Maybe Carousel???"
       /> */}
       <CardContent>
+        <Typography variant="h5" color="text.secondary">This is. Drop down menu will have tags</Typography>
+      </CardContent>
+      <CardContent>
         <Typography variant="body2" color="text.secondary">This is. Drop down menu will have tags</Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -61,10 +68,8 @@ function Task() {
           />
         </IconButton>
         <ExpandIcon
-          // expand={expanded}
-          // onClick={handleExpandClick}
-          // aria-expanded={expanded}
-          aria-label="show more"
+          expand={expanded}
+          onClick={handleExpandClick}
         >
           <ExpandOutlinedIcon />
         </ExpandIcon>
