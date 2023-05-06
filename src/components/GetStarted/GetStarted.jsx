@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 import { Box, Container, Typography } from '@mui/material';
-import CustomButton from '../CustomButton';
+import CustomButton from '../FilledButton';
 
 const CustomContainer = styled(Container)(({ theme }) => ({
   backgroundColor: '#17275f',

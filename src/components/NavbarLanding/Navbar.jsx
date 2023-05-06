@@ -12,10 +12,28 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material';
-import { Home as HomeIcon, Menu as MenuIcon } from '@mui/icons-material';
+import {
+  Home as HomeIcon,
+  Menu as MenuIcon,
+  AppShortcut as AppIcon,
+  PsychologyAlt as QuestionsIcon,
+  Info as InfoIcon,
+  Contacts as ContactsIcon,
+} from '@mui/icons-material';
 
-import CustomButton from '../CustomButton';
+import FilledButton from '../FilledButton';
 import { toggleMobileMenu } from '../../redux/actions';
+import { SEND_REQUEST_TEXT } from '../../utils/constants';
+
+import {
+  ABOUT_BUTTON,
+  CONTACT_BUTTON,
+  HOME_BUTTON,
+  HOW_BUTTON,
+  QUESTIONS_BUTTON,
+  TRACK_REQUEST,
+  navbarMenu,
+} from './constants';
 
 import styles from './Navbar.module.css';
 import logo from '../../assets/images/logo.png';
@@ -29,18 +47,18 @@ function Navbar() {
     dispatch(toggleMobileMenu());
   };
 
-  const list = (
+  const mobileList = (
     <List>
-      {['Home', 'Features', 'Services', 'Listed', 'Contact'].map(
-        (text, index) => (
+      {navbarMenu.map(
+        (text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index === 0 && <HomeIcon />}
-                {index === 1 && <HomeIcon />}
-                {index === 2 && <HomeIcon />}
-                {index === 3 && <HomeIcon />}
-                {index === 4 && <HomeIcon />}
+                {text === HOME_BUTTON && <HomeIcon />}
+                {text === HOW_BUTTON && <AppIcon />}
+                {text === ABOUT_BUTTON && <InfoIcon />}
+                {text === QUESTIONS_BUTTON && <QuestionsIcon />}
+                {text === CONTACT_BUTTON && <ContactsIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -61,28 +79,34 @@ function Navbar() {
             onClose={handleMenuClick}
           >
             <Box
-              sx={{ width: { xs: 200, sm: 250 } }}
+              className={styles.boxMobileMenu}
               onClick={handleMenuClick}
               onKeyDown={handleMenuClick}
             >
-              {list}
+              {mobileList}
             </Box>
           </Drawer>
           <img className={styles.logo} src={logo} alt="logo" />
         </Box>
 
-        <Box className={styles.linksContainer}>
-          <Typography className={styles.navLink} variant="body2">Home</Typography>
-          <Typography className={styles.navLink} variant="body2">Features</Typography>
-          <Typography className={styles.navLink} variant="body2">Services</Typography>
-          <Typography className={styles.navLink} variant="body2">Listed</Typography>
-          <Typography className={styles.navLink} variant="body2">Contact</Typography>
-          <CustomButton backgroundColor="#0f1b4c" color="#fff" buttonText="Track request" />
+        <Box className={styles.linksBox}>
+          <Box className={styles.linksContainer}>
+            <Typography className={styles.navLink} variant="body2">{HOME_BUTTON}</Typography>
+            <Typography className={styles.navLink} variant="body2">{HOW_BUTTON}</Typography>
+            <Typography className={styles.navLink} variant="body2">{ABOUT_BUTTON}</Typography>
+            <Typography className={styles.navLink} variant="body2">{QUESTIONS_BUTTON}</Typography>
+            <Typography className={styles.navLink} variant="body2">{CONTACT_BUTTON}</Typography>
+          </Box>
+          <FilledButton>
+            {TRACK_REQUEST}
+          </FilledButton>
         </Box>
       </Box>
 
       <Box className={styles.rightMenuBox}>
-        <CustomButton backgroundColor="#0f1b4c" color="#fff" buttonText="Send my request" />
+        <FilledButton className={styles.trackNumber}>
+          {SEND_REQUEST_TEXT}
+        </FilledButton>
       </Box>
     </Container>
   );

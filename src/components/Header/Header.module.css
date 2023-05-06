@@ -23,28 +23,16 @@
   margin-top: calc(2 * 8px);
   display: block;
 }
-.logoImage {
-  width: 100%;
-}
-.mobileLogo {
-  display: none
-}
-.name {
-  display: block;
-}
+.logoImage { width: 100%; }
+.mobileLogo { display: none; }
+.name { display: block; }
 .avatar {
   height: 40px;
   width: 40px;
 }
 /* sm */
 @media (max-width: 600px) {
-  .logo {
-    display: none;
-  }
-  .mobileLogo {
-    display: block;
-  }
-  .name {
-    display: none;
-  }
+  .logo { display: none; }
+  .mobileLogo { display: block; }
+  .name { display: none; }
 }

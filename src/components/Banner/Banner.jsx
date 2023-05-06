@@ -2,10 +2,9 @@ import React, { memo } from 'react';
 
 import { Box, Container, Typography } from '@mui/material';
 
-import CustomButton from '../CustomButton';
-
 import styles from './Banner.module.css';
 import bannerImage from '../../assets/images/bannerImage.jpg';
+import { DESCRIPTION_TEXT, HEADER_TEXT, SUBHEADER_TEXT } from './constants';
 
 function Banner() {
   return (
@@ -14,22 +13,14 @@ function Banner() {
         <Box className={styles.boxContent}>
           <Box className={styles.leftColumnBox}>
             <Typography className={styles.subtitle} variant="body2">
-              Добро пожаловать в наш сервисный центр
+              {HEADER_TEXT}
             </Typography>
             <Typography className={styles.title} variant="h1">
-              Ремонт оборудования наилучшим образом!
+              {SUBHEADER_TEXT}
             </Typography>
             <Typography className={styles.description} variant="body2">
-              Be the first to get the best real estate deals
-              before they hit the mass market! Hot foreclosure
-              deals with one simple search!
+              {DESCRIPTION_TEXT}
             </Typography>
-            <CustomButton
-              backgroundColor="#0f1b4c"
-              color="#fff"
-              buttonText="More About Us"
-              heroBtn={Boolean(true)}
-            />
           </Box>
           <Box className={styles.imageBox}>
             <img src={bannerImage} alt="heroIMG" className={styles.image} />

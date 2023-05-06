@@ -9,15 +9,15 @@ import Sidebar from './Sidebar';
 import Task from './Task';
 import AddButton from './AddButton';
 import Banner from './Banner';
-import CustomButton from './CustomButton';
+import FilledButton from './FilledButton';
 import Companies from './Companies';
-import Guide from './Guide';
+import Manual from './Manual';
 import Properties from './Properties';
-import House from './House';
 import Details from './Details';
 import GetStarted from './GetStarted';
 import Footer from './Footer';
 import MobileMenu from './MobileMenu';
+import YandexMaps from './YandexMaps/YandexMaps';
 
 export {
   AuthForm,
@@ -31,13 +31,13 @@ export {
   Task,
   AddButton,
   Banner,
-  CustomButton,
+  FilledButton,
   Companies,
-  Guide,
+  Manual,
   Properties,
-  House,
   Details,
   GetStarted,
   Footer,
   MobileMenu,
+  YandexMaps,
 };

@@ -13,11 +13,17 @@
   justify-content: space-between;
   padding: calc(5 * 8px);
 }
+.linksBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(1 * 8px);
+}
 .linksContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: calc(3 * 8px);
+  gap: calc(2 * 8px);
 }
 .navLink {
   display: flex;
@@ -39,27 +45,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 1rem;
 }
 /* md */
 @media (max-width: 900px) {
-  .menuIcon {
-    display: block;
-  }
-  .container {
-    padding: calc(2 * 8px);
-  }
-  .linksContainer {
-    display: none;
-  }
-  .navLink {
-    display: block;
-  }
+  .menuIcon { display: block; }
+  .container { padding: calc(2 * 8px); }
+  .linksContainer { display: none; }
+  .navLink { display: block; }
 }
 
 /* sm */
 @media (max-width: 600px) {
-  .logo {
-    display: none;
-  }
+  .logo { display: none; }
+  .boxMobileMenu { width: 250px; }
 }

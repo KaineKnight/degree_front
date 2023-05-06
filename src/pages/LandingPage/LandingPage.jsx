@@ -5,7 +5,7 @@ import {
   Details,
   Footer,
   GetStarted,
-  Guide,
+  Manual,
   Banner,
   Navbar,
   Properties,
@@ -18,12 +18,13 @@ function LandingPage() {
   return (
     <div className={styles.landingPage}>
       <Navbar />
-      <Banner />
-      <Companies />
-      <Guide />
       <Properties />
+      <Banner />
+      <Manual />
+
       <Details />
       <GetStarted />
+      <Companies />
       <Footer />
       <AddButton />
     </div>
@@ -31,3 +32,13 @@ function LandingPage() {
 }
 
 export default memo(LandingPage);
+
+/*
+background color #f5fafe
+export const a = ' (или за вас это сделает мастер сервисного центра)';
+export const b = ' и отдайте свое устройство мастеру';
+export const c =
+  ' вашего оборудования. Статус заявки можно отследить по трек-номеру, 
+  который выдается при оформлении заявки';
+export const d = ' после обслуживания';
+*/

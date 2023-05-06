@@ -18,9 +18,7 @@
   font-weight: 500;
   margin: calc(10 * 8px) auto calc(4 * 8px) auto;
 }
-.leftColumnBox {
-  flex: 1;
-}
+.leftColumnBox { flex: 1; }
 .boxContent {
   display: flex;
   justify-content: center;
@@ -47,7 +45,5 @@
 }
 /* sm */
 @media (max-width: 600px) {
-  .title {
-    font-size: 40px;
-  }
+  .title { font-size: 40px; }
 }

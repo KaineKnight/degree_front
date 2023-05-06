@@ -5,12 +5,8 @@
   min-width: 140px;
 }
 
-.menuWrapper {
-  position: fixed;
-}
+.menuWrapper { position: fixed; }
 
 @media (max-width: 600px) {
-  .sidebarBox {
-    display: none;
-  }
+  .sidebarBox { display: none; }
 }

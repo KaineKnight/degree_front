@@ -79,7 +79,8 @@ function Details() {
                 my: 3,
               }}
             >
-              Youve found a neighbour
+              Image on left and three images below.
+              Duplicate component for reviews and amount of services
             </Typography>
 
             <Typography

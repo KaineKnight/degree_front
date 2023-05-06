@@ -4,3 +4,5 @@ export const REMOVE_FROM_LOCAL_STORAGE_ERROR = 'Unable to remove data, LocalStor
 
 export const ACCESS_TOKEN = 'ACCESS_TOKEN';
 export const REFRESH_TOKEN = 'REFRESH_TOKEN';
+
+export const SEND_REQUEST_TEXT = 'Отправить заявку';

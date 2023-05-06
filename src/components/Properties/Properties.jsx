@@ -2,19 +2,8 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 import { Box, Container, Typography } from '@mui/material';
-import House from '../House';
 
-const properties = [
-  {
-    id: 1,
-    img: 'house',
-    price: '35000',
-    address: '8502 Preston',
-    bedrooms: 2,
-    bathrooms: 2,
-    space: 2000,
-  },
-];
+import YandexMaps from '../YandexMaps';
 
 const PropertiesBox = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -27,6 +16,8 @@ const PropertiesBox = styled(Box)(({ theme }) => ({
 }));
 
 const PropertiesTextBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-around',
   [theme.breakpoints.down('md')]: {
     textAlign: 'center',
   },
@@ -34,33 +25,24 @@ const PropertiesTextBox = styled(Box)(({ theme }) => ({
 
 function Properties() {
   return (
-    <Box sx={{ mt: 5, backgroundColor: '#f5fafe', py: 10 }}>
+    <Box sx={{ mt: 5, py: 10 }} bgcolor="#f5fafe">
       <Container>
         <PropertiesTextBox>
-          <Typography
-            sx={{ color: '#000339', fontSize: '35px', fontWeight: 'bold' }}
-          >
-            Featured Properties
-          </Typography>
-          <Typography sx={{ color: '#5a6473', fontSize: '16px', mt: 1 }}>
-            Eerything you need to know when looking for a service center!
-          </Typography>
+          <Box width="35%">
+            <Typography
+              sx={{ color: '#000339', fontSize: '35px', fontWeight: 'bold' }}
+            >
+              Featured Properties
+            </Typography>
+            <Typography sx={{ color: '#5a6473', fontSize: '16px', mt: 1 }}>
+              Eerything you need to know when looking for a service center!
+            </Typography>
+          </Box>
+          <Box sx={{ width: '50%' }}><YandexMaps /></Box>
         </PropertiesTextBox>
 
         <PropertiesBox>
-          {
-            properties.map((property) => (
-              <House
-                key={`${property.name}-${property.key}`}
-                img={property.img}
-                price={property.price}
-                address={property.address}
-                bedrooms={property.bedrooms}
-                bathrooms={property.bathrooms}
-                space={property.space}
-              />
-            ))
-          }
+          <Box>Addresses</Box>
         </PropertiesBox>
       </Container>
     </Box>
