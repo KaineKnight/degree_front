@@ -1,0 +1,57 @@
+.containerBox { padding: calc(10 * 8px) 0; }
+.headerBox {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.largeNumbers {
+  font-size: 4rem;
+  color: #000;
+  font-weight: 700;
+}
+.caption {
+  font-size: 1.2rem;
+  color: #7b8087;
+  font-weight: 500;
+}
+.numbersContainer {
+  margin-top: calc(7 * 8px);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 calc(5 * 8px);
+}
+.numberBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-size: 2.5rem;
+  color: #000339;
+  font-weight: 700;
+  margin: calc(3 * 8px) 0;
+}
+.subtitle {
+  font-size: 1rem;
+  color: #5a6473;
+  line-height: 1.5rem;
+}
+/* md */
+@media (max-width: 900px) {
+  .headerBox {
+    flex-direction: column;
+    text-align: center;
+  }
+  .largeNumbers { font-size: 2rem; }
+  .caption { font-size: 2rem; }
+  .numbersContainer {
+    flex-direction: column;
+    gap: calc(5 * 8px);
+  }
+}
+/* sm */
+@media (max-width: 600px) {
+  
+}

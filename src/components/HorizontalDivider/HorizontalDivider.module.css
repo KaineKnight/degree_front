@@ -1,0 +1,8 @@
+.divider {
+  width: 15%;
+  height: 5px;
+  background-color: #000339;
+  margin: 0 auto;
+}
+/* md */
+@media (max-width: 600px) { .divider { margin: 0 auto; } }

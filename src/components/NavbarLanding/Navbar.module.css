@@ -47,10 +47,19 @@
   justify-content: center;
   gap: 1rem;
 }
+.mobileRequest { display: none;}
 /* md */
 @media (max-width: 900px) {
   .menuIcon { display: block; }
-  .container { padding: calc(2 * 8px); }
+  .container {
+    margin-top: 0px;
+    padding: calc(2 * 8px);
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: #f5fafe;
+    border-bottom: solid 2px #0f1b4c;
+  }
   .linksContainer { display: none; }
   .navLink { display: block; }
 }
@@ -59,4 +68,7 @@
 @media (max-width: 600px) {
   .logo { display: none; }
   .boxMobileMenu { width: 250px; }
+  
+  .desktopRequest { display: none; }
+  .mobileRequest { display: block;}
 }

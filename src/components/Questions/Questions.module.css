@@ -1,0 +1,51 @@
+.container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding-bottom: calc(10 * 8px);
+}
+.title {
+  font-size: 3rem;
+  margin: 2rem 0;
+  font-weight: 700;
+  text-align: center;
+}
+.questionBox {
+  margin-top: 2rem;
+  cursor: pointer;
+}
+.question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.questionTitle { font-size: 1.8rem; }
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.answerText {
+  padding-top: 1rem;
+  line-height: 1.6;
+  font-size: 1.4rem;
+}
+.questionBox.active .answer {
+  max-height: 3000px;
+  animation: fade 0.4s ease-in-out;
+}
+.questionBox.active .expand { transform: rotate(180deg); }
+
+.expand { transition: transform 0.4s ease-in; }
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

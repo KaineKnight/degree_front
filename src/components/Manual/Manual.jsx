@@ -9,6 +9,7 @@ import {
 } from '@mui/icons-material';
 
 import CustomButton from '../FilledButton';
+import { SEND_REQUEST_TEXT } from '../../utils/constants';
 
 import {
   STEP_FOUR,
@@ -21,7 +22,7 @@ import {
 } from './constants';
 
 import styles from './Manual.module.css';
-import { SEND_REQUEST_TEXT } from '../../utils/constants';
+import HorizontalDivider from '../HorizontalDivider';
 
 function Manual() {
   const stepsJSX = steps.map((step) => (
@@ -40,7 +41,7 @@ function Manual() {
   ));
   return (
     <Box className={styles.container}>
-      <Box className={styles.horizontalDivider} />
+      <HorizontalDivider />
       <Typography variant="h3" className={styles.title}>
         {WHAT_TO_DO}
       </Typography>

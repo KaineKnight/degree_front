@@ -22,6 +22,7 @@ import {
 } from '@mui/icons-material';
 
 import FilledButton from '../FilledButton';
+import AddButton from '../RequestButton';
 import { toggleMobileMenu } from '../../redux/actions';
 import { SEND_REQUEST_TEXT } from '../../utils/constants';
 
@@ -104,9 +105,14 @@ function Navbar() {
       </Box>
 
       <Box className={styles.rightMenuBox}>
-        <FilledButton className={styles.trackNumber}>
-          {SEND_REQUEST_TEXT}
-        </FilledButton>
+        <Box className={styles.desktopRequest}>
+          <FilledButton>
+            {SEND_REQUEST_TEXT}
+          </FilledButton>
+        </Box>
+        <Box className={styles.mobileRequest}>
+          <AddButton />
+        </Box>
       </Box>
     </Container>
   );

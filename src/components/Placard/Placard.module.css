@@ -1,0 +1,35 @@
+.container {
+  padding: calc(10 * 8px) 0;
+  background-color: #f5fafe;
+}
+.content {
+  background-color: #17275f;
+  max-width: 800px;
+  height: 420px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.title {
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 700;
+}
+.subtitle {
+  font-size: 1rem;
+  color: #ccc;
+  font-weight: 500;
+  margin: calc(3 * 8px) 0;
+}
+/* md */
+@media (max-width: 900px) {
+  .container { padding: calc(3 * 8px); }
+  .content {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: calc(3 * 8px);
+    width: 90%;
+  }
+}

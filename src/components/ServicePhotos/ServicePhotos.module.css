@@ -1,0 +1,60 @@
+.containerBox { 
+  padding: calc(5 * 8px) 0;
+  margin-top: calc(5 * 8px);
+}
+.captions {
+  display: flex;
+  gap: calc(3 * 8px);
+  align-items: center;
+}
+.images {
+  margin-top: calc(7 * 8px);
+  display: flex;
+  gap: 5%;
+  justify-content: space-between;
+}
+.bigImage {
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
+  border-radius: 5px;
+}
+.title {
+  font-size: 2.1rem;
+  color: #000339;
+  font-weight: 700;
+  margin: calc(3 * 8px) 0;
+}
+.subtitle {
+  font-size: 1rem;
+  color: #5a6473;
+  line-height: 1.5rem;
+}
+.imageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imageText {
+  margin-top: 8px;
+  font-size: 1.2rem;
+  color: #7b8087;
+  font-weight: 500;
+}
+/* md */
+@media (max-width: 900px) {
+  .captionBox {
+    flex-direction: column;
+    text-align: center;
+  }
+  .captions {
+    flex-direction: column;
+  }
+  .images {
+    flex-direction: column;
+    gap: calc(5 * 8px);
+    margin: calc(5 * 8px) auto;
+    width: 70%;
+  }
+  .imageText { font-size: 14px; }
+}

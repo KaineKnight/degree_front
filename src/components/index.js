@@ -7,17 +7,19 @@ import Header from './Header';
 import Rightbar from './Rightbar';
 import Sidebar from './Sidebar';
 import Task from './Task';
-import AddButton from './AddButton';
+import RequestButton from './RequestButton';
 import Banner from './Banner';
 import FilledButton from './FilledButton';
-import Companies from './Companies';
+import ServicePhotos from './ServicePhotos';
 import Manual from './Manual';
-import Properties from './Properties';
-import Details from './Details';
-import GetStarted from './GetStarted';
+import WhereToFind from './WhereToFind';
+import About from './About';
+import Placard from './Placard';
 import Footer from './Footer';
 import MobileMenu from './MobileMenu';
 import YandexMaps from './YandexMaps/YandexMaps';
+import HorizontalDivider from './HorizontalDivider';
+import Questions from './Questions';
 
 export {
   AuthForm,
@@ -29,15 +31,17 @@ export {
   Rightbar,
   Sidebar,
   Task,
-  AddButton,
+  RequestButton,
   Banner,
   FilledButton,
-  Companies,
+  ServicePhotos,
   Manual,
-  Properties,
-  Details,
-  GetStarted,
+  WhereToFind,
+  About,
+  Placard,
   Footer,
   MobileMenu,
   YandexMaps,
+  HorizontalDivider,
+  Questions,
 };

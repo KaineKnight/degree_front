@@ -1,15 +1,15 @@
 import React, { memo } from 'react';
 
 import {
-  Companies,
-  Details,
+  ServicePhotos,
+  About,
   Footer,
-  GetStarted,
+  Placard,
   Manual,
   Banner,
   Navbar,
-  Properties,
-  AddButton,
+  WhereToFind,
+  Questions,
 } from '../../components';
 
 import styles from './LandingPage.module.css';
@@ -18,15 +18,15 @@ function LandingPage() {
   return (
     <div className={styles.landingPage}>
       <Navbar />
-      <Properties />
       <Banner />
       <Manual />
+      <WhereToFind />
+      <About />
+      <ServicePhotos />
+      <Questions />
+      <Placard />
 
-      <Details />
-      <GetStarted />
-      <Companies />
       <Footer />
-      <AddButton />
     </div>
   );
 }
@@ -38,7 +38,7 @@ background color #f5fafe
 export const a = ' (или за вас это сделает мастер сервисного центра)';
 export const b = ' и отдайте свое устройство мастеру';
 export const c =
-  ' вашего оборудования. Статус заявки можно отследить по трек-номеру, 
+  ' вашего оборудования. Статус заявки можно отследить по трек-номеру,
   который выдается при оформлении заявки';
 export const d = ' после обслуживания';
 */
