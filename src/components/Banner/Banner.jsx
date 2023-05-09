@@ -8,7 +8,7 @@ import { DESCRIPTION_TEXT, HEADER_TEXT, SUBHEADER_TEXT } from './constants';
 
 function Banner() {
   return (
-    <Box className={styles.boxWrapper}>
+    <Box id="banner" className={styles.boxWrapper}>
       <Container>
         <Box className={styles.boxContent}>
           <Box className={styles.leftColumnBox}>

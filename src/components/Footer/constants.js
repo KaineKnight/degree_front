@@ -1,0 +1,9 @@
+export const SERVICES_TEXT = 'Услуги ремонта';
+export const FIX_PHONE = 'Телефоны';
+export const FIX_TABLET = 'Планшеты';
+export const FIX_CONSOLE = 'Консоли';
+export const FIX_PC = 'Компьютеры';
+export const EMPLOYEES_TEXT = 'Для сотрудников';
+export const EMPLOYEES_PAGE = 'Сайт сотрудников';
+export const EMPLOYEE_DOCUMENT = 'Трудовой договор';
+export const EMPLOYEE_WORK = 'О трудоустройстве';

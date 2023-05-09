@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Box, Typography } from '@mui/material';
 import {
@@ -8,8 +9,10 @@ import {
   Devices as DevicesIcon,
 } from '@mui/icons-material';
 
-import CustomButton from '../FilledButton';
+import FilledButton from '../FilledButton';
+import HorizontalDivider from '../HorizontalDivider';
 import { SEND_REQUEST_TEXT } from '../../utils/constants';
+import { toggleModal } from '../../redux/actions';
 
 import {
   STEP_FOUR,
@@ -22,9 +25,12 @@ import {
 } from './constants';
 
 import styles from './Manual.module.css';
-import HorizontalDivider from '../HorizontalDivider';
 
 function Manual() {
+  const dispatch = useDispatch();
+
+  const openModal = () => dispatch(toggleModal());
+
   const stepsJSX = steps.map((step) => (
     <Box key={step.step} className={styles.step}>
       {step.step === STEP_ONE && <PageIcon />}
@@ -40,7 +46,7 @@ function Manual() {
     </Box>
   ));
   return (
-    <Box className={styles.container}>
+    <Box id="manual" className={styles.container}>
       <HorizontalDivider />
       <Typography variant="h3" className={styles.title}>
         {WHAT_TO_DO}
@@ -53,7 +59,7 @@ function Manual() {
       <Box className={styles.stepsBox}>
         {stepsJSX}
       </Box>
-      <CustomButton>{SEND_REQUEST_TEXT}</CustomButton>
+      <Box onClick={openModal}><FilledButton>{SEND_REQUEST_TEXT}</FilledButton></Box>
     </Box>
   );
 }

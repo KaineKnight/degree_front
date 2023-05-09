@@ -27,7 +27,7 @@ function Questions() {
   ));
 
   return (
-    <Box className={styles.container}>
+    <Box id="questions" className={styles.container}>
       <Typography variant="h2" className={styles.title}>{QUESTIONS_TEXT}</Typography>
       {questionsJSX}
     </Box>

@@ -10,7 +10,7 @@ import styles from './WhereToFind.module.css';
 
 function WhereToFind() {
   return (
-    <Box className={styles.contentSetup}>
+    <Box id="whereToFind" className={styles.contentSetup}>
       <Container>
         <Box className={styles.content}>
           <Box className={styles.textContainer}>

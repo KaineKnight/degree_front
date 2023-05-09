@@ -20,7 +20,7 @@ import serviceImage3 from '../../assets/images/serviceCenter3.jpg';
 
 function ServicePhotos() {
   return (
-    <Box className={styles.containerBox}>
+    <Box id="servicePhotos" className={styles.containerBox}>
       <Container>
         <Box className={styles.captions}>
           <img src={buildingImage} alt={buildingImage} className={styles.bigImage} />

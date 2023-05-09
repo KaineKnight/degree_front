@@ -1,0 +1,11 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modalBox {
+  width: 400px;
+  height: 280px;
+  padding: calc(4 * 8px);
+  border-radius: calc(3 * 8px);
+}

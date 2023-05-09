@@ -30,6 +30,11 @@
   align-items: center;
   justify-content: center;
   gap: calc(3 * 8px);
+  color: inherit;
+  text-decoration: none;
+}
+.navLink:hover {
+  color: #0f1b4c;
 }
 .rightMenuBox {
   display: flex;
@@ -48,8 +53,9 @@
   gap: 1rem;
 }
 .mobileRequest { display: none;}
+.navigationButton { text-decoration: none; }
 /* md */
-@media (max-width: 900px) {
+@media (max-width: 930px) {
   .menuIcon { display: block; }
   .container {
     margin-top: 0px;

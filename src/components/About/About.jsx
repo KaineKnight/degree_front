@@ -19,7 +19,7 @@ import styles from './About.module.css';
 
 function About() {
   return (
-    <Box className={styles.containerBox}>
+    <Box id="about" className={styles.containerBox}>
       <Container>
         <Box className={styles.headerBox}>
           <HorizontalDivider />

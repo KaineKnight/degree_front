@@ -19,10 +19,20 @@
   cursor: pointer;
 }
 .footerItem:hover { color: #000; }
+.contacts {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.contact { cursor: pointer; }
+.contact:hover { color: #1c3dbf; }
 /* sm */
 @media (max-width: 600px) {
   .container {
     flex-direction: column;
     text-align: center;
+  }
+  .contacts {
+    justify-content: center;
   }
 }

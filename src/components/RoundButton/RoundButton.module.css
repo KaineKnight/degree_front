@@ -1,0 +1,11 @@
+.button {
+  position: fixed;
+  bottom: 20px;
+  left: calc(30 * 8px)
+}
+
+@media (max-width: 600px) {
+  .button {
+    left: calc(50% - 25px);
+  }
+}
