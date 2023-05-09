@@ -7,7 +7,7 @@ import { CircularProgress } from '@mui/material';
 import './App.css';
 
 const Layout = lazy(() => import(/* webpackChunkName: 'Layout' */ './components/Layout'));
-const LandingLayout = lazy(() => import(/* webpackChunkName: LandingLayout */ './components/LandingLayout'));
+const LandingLayout = lazy(() => import(/* webpackChunkName: 'LandingLayout' */ './components/LandingLayout'));
 
 const LandingPage = lazy(() => import(/* webpackChunkName: 'LandingPage' */ './pages/LandingPage'));
 const AuthPage = lazy(() => import(/* webpackChunkName: 'AuthPage' */ './pages/AuthPage'));

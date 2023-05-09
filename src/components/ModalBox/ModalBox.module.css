@@ -4,8 +4,9 @@
   justify-content: center;
 }
 .modalBox {
-  width: 400px;
-  height: 280px;
+  /* width: 400px; */
+  min-width: 120px;
+  min-height: 280px;
   padding: calc(4 * 8px);
   border-radius: calc(3 * 8px);
 }

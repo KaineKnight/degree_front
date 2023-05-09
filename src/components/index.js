@@ -1,6 +1,5 @@
 import AuthForm from './AuthForm';
 import Feed from './Feed';
-import FormTextField from './FormTextField';
 import Navbar from './NavbarLanding';
 import Layout from './Layout';
 import Header from './Header';
@@ -25,11 +24,11 @@ import RequestForm from './RequestForm';
 import LandingLayout from './LandingLayout';
 import FormikText from './FormikText';
 import FormikSelect from './FormikSelect';
+import FormikPhone from './FormikPhone';
 
 export {
   AuthForm,
   Feed,
-  FormTextField,
   Navbar,
   Layout,
   Header,
@@ -54,4 +53,5 @@ export {
   LandingLayout,
   FormikText,
   FormikSelect,
+  FormikPhone,
 };

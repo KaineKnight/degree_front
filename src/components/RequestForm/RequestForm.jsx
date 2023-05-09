@@ -1,32 +1,50 @@
-import React, { memo } from 'react';
+import React, {
+  memo,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useDispatch } from 'react-redux';
-
-import { Alert, Avatar, Box, Button, CircularProgress, TextField, Typography } from '@mui/material';
-
-import { FORM_REQUEST_TITLE } from './constants';
 import { Form, Formik } from 'formik';
+
+import {
+  Alert,
+  Avatar,
+  Box,
+  Button,
+  CircularProgress,
+  Typography,
+} from '@mui/material';
+
 import FormikText from '../FormikText';
 import FormikSelect from '../FormikSelect';
+import FormikPhone from '../FormikPhone';
 
-const userStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '10px',
-  marginBottom: '20px',
-};
+import { FORM_REQUEST_TITLE, initialValues, validationSchema } from './constants';
 
-/*
-<Box sx={userStyle}>
-        <Avatar src="" sx={{ width: 30, height: 30 }} />
-        <Typography fontWeight={500} variant="span">John Doe</Typography>
-      </Box>
-      */
+import styles from './RequestForm.module.css';
 
 function RequestForm() {
   const dispatch = useDispatch();
 
+  const category = useRef(null);
+  const brand = useRef(null);
+
+  const [isProblemDisabled, setIsProblemDisabled] = useState(true);
+  useEffect(() => {
+    if (category.current?.value && brand.current?.value) {
+      // send request to get problems options
+      setIsProblemDisabled(false);
+    }
+  }, [category.current?.value, brand.current?.value]);
+
   const isLoading = null;
   const error = null;
+  const options = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    // ...
+  ];
   return (
     <>
       <Typography variant="h6" color="gray" textAlign="center">
@@ -34,11 +52,27 @@ function RequestForm() {
       </Typography>
       {isLoading && <CircularProgress />}
       {error?.message && <Alert severity="error">{error.message}</Alert>}
-      <Formik>
-        <Form>
-          <FormikText />
-          {/* <FormikSelect /> */}
-          <Button>submit</Button>
+      <Formik initialValues={initialValues} enableReinitialize validationSchema={validationSchema}>
+        <Form className={styles.form}>
+          <Box className={styles.userInfo}>
+            <Avatar src="" className={styles.avatar} />
+            <Box>
+              <Box className={styles.nameAndPhone}>
+                <FormikText name="contactName" label="name" required />
+                <FormikPhone name="contactPhone" label="lolo" required />
+              </Box>
+              <FormikText name="contactEmail" type="email" label="email" fullWidth />
+            </Box>
+          </Box>
+
+          <FormikText name="title" label="title" fullWidth required />
+          <FormikText name="description" label="desc" multiline rows={4} fullWidth />
+          <Box className={styles.selects}>
+            <FormikSelect ref={category} name="categoryId" label="category" options={options} fullWidth />
+            <FormikSelect ref={brand} name="brandId" label="brand" options={options} fullWidth />
+          </Box>
+          <FormikSelect disabled={isProblemDisabled} name="problemTitle" label="problem" options={options} fullWidth />
+          <Button className={styles.submit} variant="outlined">submit</Button>
         </Form>
       </Formik>
     </>

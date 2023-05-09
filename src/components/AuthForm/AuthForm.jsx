@@ -13,7 +13,7 @@ import {
 import LoginIcon from '@mui/icons-material/Login';
 
 import { authRequest } from '../../redux/actions/authActions';
-import FormTextField from '../FormTextField';
+import FormikText from '../FormikText';
 
 import {
   BlueButton,
@@ -65,8 +65,8 @@ function AuthForm({ isRegisterButton }) {
       >
         <Form className={styles.form}>
           {formFields.map((textField) => (
-            <FormTextField
-              required
+            <FormikText
+              required={textField.isRequired}
               key={textField.name}
               name={textField.name}
               type={textField.type}

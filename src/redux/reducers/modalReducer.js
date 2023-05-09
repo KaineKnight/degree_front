@@ -1,7 +1,7 @@
 import { TOGGLE_MODAL } from '../actionTypes';
 
 const initialState = {
-  isOpen: false,
+  isOpen: true,
 };
 
 export default function modalReducer(state = initialState, action = {}) {

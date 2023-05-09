@@ -60,12 +60,14 @@ export const loginFields = [
     type: 'email',
     placeholder: 'charles@barkley.com',
     label: 'Your email',
+    isRequired: true,
   },
   {
     name: 'password',
     type: 'password',
     placeholder: 'password',
     label: 'Your password',
+    isRequired: true,
   },
 ];
 
@@ -75,6 +77,7 @@ export const signUpFields = [
     type: 'text',
     placeholder: 'Tony Soprano',
     label: 'Your Name',
+    isRequired: true,
   },
   ...loginFields,
 ];

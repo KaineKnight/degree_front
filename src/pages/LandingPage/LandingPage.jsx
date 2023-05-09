@@ -37,7 +37,12 @@ function LandingPage() {
       <HashLink to="#navbar" smooth>
         <Tooltip
           title="Up"
-          sx={{ position: 'fixed', bottom: 20, right: 10, display: { sm: 'none' } }}
+          sx={{
+            position: 'fixed',
+            bottom: 20,
+            right: 10,
+            display: { sm: 'none' },
+          }}
         >
           <Fab color="primary">
             <KeyboardArrowUpIcon />

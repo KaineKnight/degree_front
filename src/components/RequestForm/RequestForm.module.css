@@ -1,0 +1,44 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.avatar {
+  width: 30px;
+  height: 30px;
+  display: flex;
+}
+.nameAndPhone {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.selects {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.submit {
+  margin: 10px auto;
+  width: 100%;
+  /* border: 2px black solid; */
+  background-color: #0f1b4c;
+  color: white;
+  font-weight: 600;
+}
+@media (max-width: 600px) {
+  .avatar { display: none; }
+}
+@media (max-width: 460px) {
+  .userInfo {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nameAndPhone { flex-direction: column; }
+  .selects { flex-direction: column; }
+}

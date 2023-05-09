@@ -7,34 +7,38 @@ import { TextField } from '@mui/material';
 
 function FormikText(props) {
   const [field, meta] = useField(props);
+  const {
+    label, name, type, variant, ...rest
+  } = props;
 
-  const displayError = meta?.touched && meta?.error;
+  const displayError = meta.touched && meta?.error;
+
   return (
     <TextField
       margin="normal"
-      variant="outlined"
-      error={displayError}
-      // helperText={displayError}
+      variant={variant}
+      label={label}
+      type={type}
+      name={name}
+      error={Boolean(displayError)}
+      helperText={displayError}
       {...field}
-      {...props}
+      {...rest}
     />
   );
 }
 
 FormikText.propTypes = {
-  name: PropTypes.string,
-  type: PropTypes.string,
-  placeholder: PropTypes.string,
+  name: PropTypes.string.isRequired,
   label: PropTypes.string,
-  required: PropTypes.bool,
-  multiline: PropTypes.bool,
-  rows: PropTypes.number,
+  type: PropTypes.string,
+  variant: PropTypes.string,
 };
 
 FormikText.defaultProps = {
+  label: '',
   type: 'text',
-  required: false,
-  multiline: false,
+  variant: 'outlined',
 };
 
 export default memo(FormikText);
