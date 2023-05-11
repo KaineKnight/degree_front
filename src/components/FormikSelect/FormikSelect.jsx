@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { forwardRef } from 'react';
+import React, { memo } from 'react';
 import { useField } from 'formik';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,7 @@ import {
   Select,
 } from '@mui/material';
 
-const FormikSelect = forwardRef((props, ref) => {
+function FormikSelect(props) {
   const [field, meta] = useField(props);
   const {
     name, label, options, ...rest
@@ -19,10 +19,9 @@ const FormikSelect = forwardRef((props, ref) => {
   const displayError = meta.touched && meta.error;
 
   return (
-    <FormControl variant="outlined" fullWidth error={displayError}>
+    <FormControl variant="outlined" fullWidth error={Boolean(displayError)}>
       <InputLabel>{label}</InputLabel>
       <Select
-        ref={ref}
         {...field}
         label={label}
         name={name}
@@ -41,7 +40,7 @@ const FormikSelect = forwardRef((props, ref) => {
       )}
     </FormControl>
   );
-});
+}
 
 FormikSelect.propTypes = {
   name: PropTypes.string.isRequired,
@@ -61,4 +60,4 @@ FormikSelect.defaultProps = {
   defaultValue: '',
 };
 
-export default FormikSelect;
+export default memo(FormikSelect);
