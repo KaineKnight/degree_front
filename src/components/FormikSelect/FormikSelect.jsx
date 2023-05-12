@@ -28,8 +28,8 @@ function FormikSelect(props) {
         {...rest}
       >
         {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
+          <MenuItem key={option.value} value={option.id}>
+            {option.title}
           </MenuItem>
         ))}
       </Select>

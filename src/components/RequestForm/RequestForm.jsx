@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 
 import {
@@ -27,30 +27,15 @@ import {
 } from './constants';
 
 import styles from './RequestForm.module.css';
-
-const optionsCategory = [
-  { value: 'coption1', label: 'cOption 1' },
-  { value: 'coption2', label: 'cOption 2' },
-  // ...
-];
-const optionsBrand = [
-  { value: 'boption1', label: 'bOption 1' },
-  { value: 'boption2', label: 'bOption 2' },
-  // ...
-];
-const optionsProblem = [
-  { value: 'boption1', label: 'bOption 1' },
-  { value: 'boption2', label: 'bOption 2' },
-  // ...
-];
-const optionsModel = [
-  { value: 'moption1', label: 'mOption 1' },
-  { value: 'moption2', label: 'mOption 2' },
-  // ...
-];
+import { brandsRequest, categoriesRequest, modelsRequest, problemsRequest } from '../../redux/actions';
 
 function RequestForm() {
   const dispatch = useDispatch();
+
+  const brands = useSelector((store) => store.brands.brands);
+  const categories = useSelector((store) => store.categories.categories);
+  const models = useSelector((store) => store.models.models);
+  const problems = useSelector((store) => store.problems.problems);
 
   const [category, setCategory] = useState(null);
   const [brand, setBrand] = useState(null);
@@ -59,16 +44,21 @@ function RequestForm() {
   const [isModelDisabled, setIsModelDisabled] = useState(true);
 
   useEffect(() => {
+    dispatch(brandsRequest());
+    dispatch(categoriesRequest());
+  }, []);
+
+  useEffect(() => {
     if (category && brand) {
       setIsModelDisabled(false);
-      // get model options
+      dispatch(modelsRequest());
     }
   }, [category, brand]);
 
   useEffect(() => {
     if (model) {
       setIsProblemDisabled(false);
-      // get problem options
+      dispatch(problemsRequest());
     }
   }, [model]);
 
@@ -146,7 +136,7 @@ function RequestForm() {
                 }}
                 name={fields.category.name}
                 label={fields.category.label}
-                options={optionsCategory}
+                options={categories}
                 fullWidth
               />
               <FormikSelect
@@ -156,7 +146,7 @@ function RequestForm() {
                 }}
                 name={fields.brand.name}
                 label={fields.brand.label}
-                options={optionsBrand}
+                options={brands}
                 fullWidth
               />
             </Box>
@@ -169,7 +159,7 @@ function RequestForm() {
               disabled={isModelDisabled}
               name={fields.model.name}
               label={fields.model.label}
-              options={optionsModel}
+              options={models}
               fullWidth
             />
             <FormikSelect
@@ -177,7 +167,7 @@ function RequestForm() {
               disabled={isProblemDisabled}
               name={fields.problem.name}
               label={fields.problem.label}
-              options={optionsProblem}
+              options={problems}
               fullWidth
             />
             <Button className={styles.submit} type="submit" variant="outlined">submit</Button>

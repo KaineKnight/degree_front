@@ -19,7 +19,6 @@ const rootReducer = combineReducers({
   models: modelsReducer,
   problems: problemsReducer,
   // news: newsReducer,
-  // modal: modalReducer,
   // user: userReducer,
 });
 
