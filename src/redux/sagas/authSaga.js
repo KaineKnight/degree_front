@@ -13,7 +13,7 @@ import {
   logoutSuccess,
 } from '../actions';
 import { authorization, logout, refreshTokenRequest } from '../../api';
-import { getLocalStorageItem, removeLocalStorageItem, setLocalStorageItem } from '../../utils/localStorageInteractor';
+import { removeLocalStorageItem, setLocalStorageItem } from '../../utils/localStorageInteractor';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../utils/constants';
 import { LOGIN_URL, REGISTER_URL } from '../constants';
 
