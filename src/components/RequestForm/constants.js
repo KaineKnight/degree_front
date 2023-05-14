@@ -2,6 +2,9 @@ import * as Yup from 'yup';
 
 export const FORM_REQUEST_TITLE = 'Форма на отправление заявки';
 export const SUBMIT_BUTTON = 'Отправить';
+export const TRACK_NUMBER_TITLE = 'Трек-номер вашей заявки';
+export const SAVE_TRACK_NUMBER = 'Сохраните его, чтобы не потерять';
+export const SEND_MORE_REQUESTS = 'Отправить еще заявку';
 
 export const initialValues = {
   contactName: '',
@@ -12,35 +15,34 @@ export const initialValues = {
   categoryId: '',
   brandId: '',
   modelId: '',
-  problemTitle: '',
+  problemId: '',
 };
 
 export const validationSchema = Yup.object().shape({
   contactName: Yup.string()
-    .trim('No white spaces at start or end!')
-    .max(255, 'Must be 255 character or less')
-    .required('Required contact name'),
+    .trim()
+    .max(255, 'Не более 255 символов на имя')
+    .required('Контактное имя обязательно'),
   contactPhone: Yup.string()
     .trim()
-    .max(255, 'Must be 255 character or less')
-    .required('Required contact name'),
+    .required('Контактный номер обязателен'),
   contactEmail: Yup.string()
-    .trim('No white spaces at start or end!')
-    .email('Invalid email address')
-    .max(255, 'Must be 255 characters or less'),
+    .trim()
+    .email('Неверный формат адреса email')
+    .max(255, 'email не более 255 символов'),
   title: Yup.string()
     .trim()
-    .required(),
+    .required('Заголовок заявки обязателен'),
   description: Yup.string()
     .trim(),
   categoryId: Yup.string()
-    .required(),
+    .required('Выберите категорию'),
   brandId: Yup.string()
-    .required(),
+    .required('Выберите бренд'),
   modelId: Yup.string()
-    .required(),
-  problemTitle: Yup.string()
-    .required(),
+    .required('Выберите модель'),
+  problemId: Yup.string()
+    .required('Выберите проблему из списка'),
 });
 
 export const fields = {
@@ -52,5 +54,5 @@ export const fields = {
   category: { name: 'categoryId', label: 'Категория' },
   brand: { name: 'brandId', label: 'Бренд' },
   model: { name: 'modelId', label: 'Модель' },
-  problem: { name: 'problemTitle', label: 'Возможные проблемы' },
+  problem: { name: 'problemId', label: 'Возможные проблемы' },
 };

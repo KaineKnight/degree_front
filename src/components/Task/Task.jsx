@@ -1,4 +1,5 @@
 import React, { memo, useState } from 'react';
+import { PropTypes } from 'prop-types';
 
 import {
   Card,
@@ -10,6 +11,9 @@ import {
   CardActions,
   Collapse,
   Checkbox,
+  Chip,
+  Box,
+  Button,
 } from '@mui/material';
 import {
   ExpandMore as ExpandIcon,
@@ -20,69 +24,156 @@ import {
   ThumbDownOutlined as DislikeOutlinedIcon,
   ThumbDown as DislikeFilledIcon,
 } from '@mui/icons-material';
+// import DoNotDisturbOffIcon from '@mui/icons-material/DoNotDisturbOff';
+// import HourglassFullIcon from '@mui/icons-material/HourglassFull';
 
-function Task() {
+import styles from './Task.module.css';
+import { ADDITIONAL_INFO } from './constants';
+import { useDispatch, useSelector } from 'react-redux';
+import ModalBox from '../ModalBox';
+import { toggleModal } from '../../redux/actions';
+
+function Task({
+  id,
+  title,
+  description,
+  contactName,
+  contactPhone,
+  contactEmail,
+  isCompleted,
+  status,
+  createdAt,
+  problem,
+  model,
+  brand,
+  category,
+  taskUser,
+}) {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.auth.user);
+
   const [expanded, setExpand] = useState(false);
-  const handleExpandClick = () => {
-    setExpand(!expanded);
+  const [liked, setLiked] = useState(false);
+  const [rejected, setRejected] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
+  const [isDisabledIcon, setIsDisabledIcon] = useState(false);
+
+  // if (task?.users?.every((user) => user.userId !== user.id )) setIsDisabledIcon(true);
+  // if (task?.user?.)
+
+  const handleExpandClick = () => setExpand(!expanded);
+  const handleLike = () => {
+    dispatch(toggleModal());
+    setLiked(!liked);
   };
+  const handleReject = () => {
+    dispatch(toggleModal());
+    setRejected(!rejected);
+  };
+
+  const creationDate = new Date(createdAt);
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const dateString = creationDate.toLocaleDateString('ru-ru', dateOptions);
+
   return (
-    <Card sx={{
-      // maxWidth: 600,
-      width: '80%',
-    }}
-    >
+    <Card className={styles.card}>
       <CardHeader
-        avatar={<Avatar sx={{ bgcolor: '#87A3F7' }} />}
+        avatar={<Avatar className={styles.contactImage} />}
         action={(
           <IconButton>
             <VerticalDotsIcon />
-            <Typography>+12345678910</Typography>
+            <Typography>{contactPhone}</Typography>
           </IconButton>
         )}
-        title="Contact Name"
-        subheader="September 14 Date"
+        title={contactName}
+        subheader={dateString}
       />
-      {/* <CardMedia
-        component="img"
-        image="https://klike.net/uploads/posts/2019-12/1577730308_49.jpg"
-        alt="Maybe Carousel???"
-      /> */}
       <CardContent>
-        <Typography variant="h5" color="text.secondary">This is. Drop down menu will have tags</Typography>
+        <Typography variant="h5" color="text.secondary">{problem.title}</Typography>
       </CardContent>
       <CardContent>
-        <Typography variant="body2" color="text.secondary">This is. Drop down menu will have tags</Typography>
+        <Chip className={styles.chip} label={`Цена: ${problem.price} руб.`} />
+        <Chip className={styles.chip} label={`Время выполнения: ${problem.time} ч.`} />
+        <Chip className={styles.chip} label={`Категория: ${category.title}`} />
+        <Chip className={styles.chip} label={`Бренд: ${brand.title}`} />
+        <Chip className={styles.chip} label={`Модель: ${model.title}`} />
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to fav">
+        <IconButton disabled={isDisabledIcon || rejected} onClick={handleLike}>
           <Checkbox
             icon={<FavoriteBorderIcon />}
-            checkedIcon={<FavoriteIcon sx={{ color: 'red' }} />}
+            checked={liked}
+            checkedIcon={<FavoriteIcon className={styles.likeButton} />}
           />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton disabled={isDisabledIcon || liked} onClick={handleReject}>
           <Checkbox
             icon={<DislikeOutlinedIcon />}
-            checkedIcon={<DislikeFilledIcon sx={{ color: '#87A3F7' }} />}
+            checked={rejected}
+            checkedIcon={<DislikeFilledIcon className={styles.dislikeButon} />}
           />
         </IconButton>
-        <ExpandIcon
-          expand={expanded}
-          onClick={handleExpandClick}
-        >
+        <ExpandIcon onClick={handleExpandClick} className={styles.expand}>
           <ExpandOutlinedIcon />
         </ExpandIcon>
       </CardActions>
-      <Collapse>
+      <Collapse in={expanded}>
         <CardContent>
-          <Typography>123</Typography>
-          <Typography paragraph>234</Typography>
-          <Typography>345</Typography>
+          <Typography variant="h6" paragraph>{ADDITIONAL_INFO}</Typography>
+          <Typography paragraph>{contactEmail && `Email: ${contactEmail}`}</Typography>
+          <Typography paragraph>{title}</Typography>
+          <Typography paragraph>{description}</Typography>
         </CardContent>
       </Collapse>
+      <ModalBox>
+        <Box>
+          <Box>Вы уверены, что хотите совершить действие?</Box>
+          <Button>Да</Button>
+          <Button>Нет</Button>
+        </Box>
+      </ModalBox>
     </Card>
   );
 }
+
+Task.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  contactName: PropTypes.string.isRequired,
+  contactPhone: PropTypes.string.isRequired,
+  contactEmail: PropTypes.string,
+  isCompleted: PropTypes.bool,
+  createdAt: PropTypes.string,
+  status: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+  problem: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.string,
+    time: PropTypes.string,
+  }).isRequired,
+  model: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+  brand: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+  category: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+};
+
+Task.defaultProps = {
+  description: null,
+  contactEmail: null,
+  isCompleted: false,
+  createdAt: null,
+};
 
 export default memo(Task);

@@ -21,8 +21,6 @@ import {
   REGISTRATION,
   SIGN_UP,
   SWITCH_TO,
-  authFormBoxStyle,
-  authHeaderStyle,
   initialValues,
   loginFields,
   loginValidationSchema,
@@ -47,8 +45,8 @@ function AuthForm({ isRegisterButton }) {
   const formFields = isRegisterForm ? signUpFields : loginFields;
 
   return (
-    <Box sx={authFormBoxStyle}>
-      <Typography variant="h3" sx={authHeaderStyle}>
+    <Box className={styles.authFormBox}>
+      <Typography variant="h3" className={styles.authHeader}>
         {isRegisterForm ? REGISTRATION : LOGIN}
       </Typography>
       {isLoading && <CircularProgress />}
@@ -79,7 +77,7 @@ function AuthForm({ isRegisterButton }) {
             variant="contained"
             type="submit"
           >
-            {isRegisterForm ? SIGN_UP : LOGIN}
+            {isRegisterForm ? REGISTRATION : LOGIN}
           </BlueButton>
           <Button sx={{ my: 1 }} type="reset" onClick={switchFormType}>
             {SWITCH_TO}

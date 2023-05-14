@@ -1,0 +1,15 @@
+.card { width: 80%; }
+.contactImage { background-color: #87a3f7; }
+.chip {
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 5px;
+  margin: 5px;
+  background-color: #87a3f7;
+}
+.likeButton { color: red; }
+.dislikeButton { color: #87a3f7; }
+.expand { cursor: pointer; }
+@media (max-width: 900px) {
+  .card { width: 100%; }
+}

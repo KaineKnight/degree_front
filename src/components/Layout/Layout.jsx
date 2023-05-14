@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -17,11 +17,15 @@ import { IS_DARK_MODE } from '../../redux/constants';
 
 function Layout() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const user = useSelector((store) => store.auth.user);
 
   useEffect(() => {
     const isDarkModeString = getLocalStorageItem(IS_DARK_MODE);
     const isDarkMode = isDarkModeString && JSON.parse(isDarkModeString.toLowerCase());
     if (isDarkMode) dispatch(toggleTheme());
+    if (!user) navigate('/auth');
   }, []);
   const isDarkTheme = useSelector((store) => store.theme.isDarkTheme);
 
@@ -32,15 +36,15 @@ function Layout() {
       background: { default: isDarkTheme ? '#121212' : '#E7F0FF' },
     },
   });
+
   return (
     <ThemeProvider theme={theme}>
       <Header />
       <Box bgcolor="background.default" color="text.primary">
-        <Stack direction="row" spacing={2} justifyContent="space-between">
+        <Stack direction="row" spacing={1.5} justifyContent="space-between">
           <Sidebar />
           <Outlet />
         </Stack>
-        {/* <AddButton /> */}
       </Box>
     </ThemeProvider>
   );

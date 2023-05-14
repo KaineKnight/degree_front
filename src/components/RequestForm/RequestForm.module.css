@@ -38,6 +38,19 @@
   color: #0f1b4c;
   
 }
+.trackNumberBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.trackNumber {
+  /* background-color: #0f1b4c;
+  color: white; */
+  background-color: #e5f3ff;
+  padding: 10px;
+  border-radius: 5px;
+  border: #0f1b4c solid 2px;
+}
 @media (max-width: 600px) {
   .avatar { display: none; }
 }

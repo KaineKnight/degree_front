@@ -1,21 +1,24 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Map, Placemark, YMaps } from '@pbe/react-yandex-maps';
 
+import { placemarksRequest } from '../../redux/actions';
 import { mapState } from './constants';
 
 import styles from './YandexMaps.module.css';
 
-const placemarks = [
-  { y: 55.76, x: 37.64 },
-  { y: 55.79, x: 37.47 },
-  { y: 55.68, x: 37.66 },
-  { y: 55.85, x: 37.65 },
-];
-
 function YandexMaps() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(placemarksRequest());
+  }, []);
+
+  const placemarks = useSelector((store) => store.placemarks.placemarks);
+
   const placemarksJSX = placemarks.map((placemark) => (
     <Placemark
-      key={`${placemark.x}-${placemark.y}`}
+      key={placemark.id}
       geometry={[placemark.y, placemark.x]}
     />
   ));

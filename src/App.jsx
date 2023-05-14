@@ -1,10 +1,14 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { RouterProvider } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { CircularProgress } from '@mui/material';
 
 import './App.css';
+import { useDispatch } from 'react-redux';
+import { getLocalStorageItem } from './utils/localStorageInteractor';
+import { REFRESH_TOKEN } from './utils/constants';
+import { authRefreshRequest } from './redux/actions';
 
 const Layout = lazy(() => import(/* webpackChunkName: 'Layout' */ './components/Layout'));
 const LandingLayout = lazy(() => import(/* webpackChunkName: 'LandingLayout' */ './components/LandingLayout'));
@@ -35,6 +39,13 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const accessToken = getLocalStorageItem(REFRESH_TOKEN);
+    if (accessToken) dispatch(authRefreshRequest());
+  }, []);
+
   return (
     <Suspense fallback={<CircularProgress />}>
       <RouterProvider router={router} />

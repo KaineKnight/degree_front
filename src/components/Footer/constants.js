@@ -7,3 +7,5 @@ export const EMPLOYEES_TEXT = 'Для сотрудников';
 export const EMPLOYEES_PAGE = 'Сайт сотрудников';
 export const EMPLOYEE_DOCUMENT = 'Трудовой договор';
 export const EMPLOYEE_WORK = 'О трудоустройстве';
+export const ABOUT_DEVELOPER = 'О разработчике';
+export const DEVELOPER_INFO = 'Автор: Михаил Кутуков';

@@ -8,6 +8,10 @@ import brandsReducer from './brandsReducer';
 import categoriesReducer from './categoriesReducer';
 import modelsReducer from './modelsReducer';
 import problemsReducer from './problemsReducer';
+import trackNumberReducer from './trackNumberReducer';
+import placemarksReducer from './placemarksReducer';
+import questionsReducer from './questionsReducer';
+import tasksReducer from './tasksReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -18,6 +22,10 @@ const rootReducer = combineReducers({
   categories: categoriesReducer,
   models: modelsReducer,
   problems: problemsReducer,
+  trackNumber: trackNumberReducer,
+  placemarks: placemarksReducer,
+  questions: questionsReducer,
+  tasks: tasksReducer,
   // news: newsReducer,
   // user: userReducer,
 });

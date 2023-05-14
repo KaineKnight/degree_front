@@ -18,16 +18,27 @@ import {
 import FormikText from '../FormikText';
 import FormikSelect from '../FormikSelect';
 import FormikPhone from '../FormikPhone';
+import {
+  brandsRequest,
+  categoriesRequest,
+  createTaskClear,
+  createTaskRequest,
+  modelsRequest,
+  problemsRequest,
+} from '../../redux/actions';
 
 import {
   FORM_REQUEST_TITLE,
+  SAVE_TRACK_NUMBER,
+  SEND_MORE_REQUESTS,
+  SUBMIT_BUTTON,
+  TRACK_NUMBER_TITLE,
   fields,
   initialValues,
   validationSchema,
 } from './constants';
 
 import styles from './RequestForm.module.css';
-import { brandsRequest, categoriesRequest, modelsRequest, problemsRequest } from '../../redux/actions';
 
 function RequestForm() {
   const dispatch = useDispatch();
@@ -36,6 +47,9 @@ function RequestForm() {
   const categories = useSelector((store) => store.categories.categories);
   const models = useSelector((store) => store.models.models);
   const problems = useSelector((store) => store.problems.problems);
+  const trackNumber = useSelector((store) => store.trackNumber.trackNumber);
+  const isLoading = null;
+  const error = null;
 
   const [category, setCategory] = useState(null);
   const [brand, setBrand] = useState(null);
@@ -51,34 +65,47 @@ function RequestForm() {
   useEffect(() => {
     if (category && brand) {
       setIsModelDisabled(false);
-      dispatch(modelsRequest());
+      console.log(category, brand);
+      dispatch(modelsRequest({ brand, category }));
     }
   }, [category, brand]);
 
   useEffect(() => {
     if (model) {
       setIsProblemDisabled(false);
-      dispatch(problemsRequest());
+      dispatch(problemsRequest({ model }));
     }
   }, [model]);
 
-  const isLoading = null;
-  const error = null;
-
-  const handleSubmit = (values) => {
-    debugger;
-    console.log(values);
-  };
-
-  const handleCategoryChange = (value) => {
-    setCategory(value);
-  };
+  const handleSubmit = (values) => dispatch(createTaskRequest(values));
+  const handleCategoryChange = (value) => setCategory(value);
   const handleBrandChange = (value) => setBrand(value);
   const handleModelChange = (value) => setModel(value);
+  const handleChangeToForm = () => dispatch(createTaskClear());
 
+  if (trackNumber) {
+    return (
+      <Box className={styles.trackNumberBox}>
+        <Box>
+          <Typography variant="h5" color="gray" textAlign="center">
+            {TRACK_NUMBER_TITLE}
+          </Typography>
+          <Typography color="gray" textAlign="center">
+            {SAVE_TRACK_NUMBER}
+          </Typography>
+        </Box>
+        <Typography className={styles.trackNumber} variant="h6" textAlign="center">
+          {trackNumber}
+        </Typography>
+        <Button className={styles.submit} onClick={handleChangeToForm} variant="outlined">
+          {SEND_MORE_REQUESTS}
+        </Button>
+      </Box>
+    );
+  }
   return (
-    <>
-      <Typography variant="h6" color="gray" textAlign="center">
+    <Box>
+      <Typography variant="h5" color="gray" textAlign="center">
         {FORM_REQUEST_TITLE}
       </Typography>
       {isLoading && <CircularProgress />}
@@ -170,11 +197,13 @@ function RequestForm() {
               options={problems}
               fullWidth
             />
-            <Button className={styles.submit} type="submit" variant="outlined">submit</Button>
+            <Button className={styles.submit} type="submit" variant="outlined">
+              {SUBMIT_BUTTON}
+            </Button>
           </Form>
         )}
       </Formik>
-    </>
+    </Box>
   );
 }
 

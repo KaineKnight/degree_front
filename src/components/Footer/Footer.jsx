@@ -9,6 +9,8 @@ import {
 } from '@mui/icons-material';
 
 import {
+  ABOUT_DEVELOPER,
+  DEVELOPER_INFO,
   EMPLOYEES_PAGE,
   EMPLOYEES_TEXT,
   EMPLOYEE_DOCUMENT,
@@ -46,6 +48,10 @@ function Footer() {
           </Typography>
           <Typography className={styles.footerItem}>{EMPLOYEE_DOCUMENT}</Typography>
           <Typography className={styles.footerItem}>{EMPLOYEE_WORK}</Typography>
+        </Box>
+        <Box>
+          <Typography className={styles.columnTitle}>{ABOUT_DEVELOPER}</Typography>
+          <Typography className={styles.footerItem}>{DEVELOPER_INFO}</Typography>
         </Box>
         <Box className={styles.contacts}>
           <TelegramIcon className={styles.contact} />

@@ -4,9 +4,14 @@
   justify-content: center;
 }
 .modalBox {
-  /* width: 400px; */
   min-width: 120px;
   min-height: 280px;
   padding: calc(4 * 8px);
   border-radius: calc(3 * 8px);
+}
+@media (max-width: 466px) {
+  .modalBox {
+    max-height: 650px;
+    overflow: auto;
+  }
 }

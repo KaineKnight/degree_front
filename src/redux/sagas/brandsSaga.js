@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { BRANDS_REQUESTED } from '../actionTypes';
-import { getBrands } from '../../api/filtersRequests';
+import { getBrands } from '../../api';
 import { brandsFailure, brandsSuccess } from '../actions';
 
 function* brandsWorker() {

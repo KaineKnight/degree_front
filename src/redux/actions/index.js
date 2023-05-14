@@ -7,3 +7,5 @@ export * from './categoriesActions';
 export * from './modelsActions';
 export * from './problemsActions';
 export * from './tasksActions';
+export * from './placemarksActions';
+export * from './questionsActions';

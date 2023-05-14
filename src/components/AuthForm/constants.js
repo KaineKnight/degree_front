@@ -3,34 +3,10 @@ import * as Yup from 'yup';
 import styled from '@emotion/styled';
 import { Button } from '@mui/material';
 
-// styles
-export const authFormBoxStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  bgcolor: 'background.paper',
-  padding: '10px 40px',
-  boxShadow: '5px 5px 10px #979797',
-  minWidth: '20%',
-  display: 'flex',
-  flexDirection: 'column',
-  maxWidth: '450px',
-  alignItems: 'center',
-  justifyContent: 'center',
-  borderRadius: '5px',
-  backgroundColor: 'white',
-};
-
-export const authHeaderStyle = {
-  p: '10px',
-  textAlign: 'center',
-};
-
 // validation
 export const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
-    .trim('No white spaces at start or end!')
+    .trim()
     .email('Invalid email address')
     .max(255, 'Must be 255 characters or less')
     .required('Required email'),
@@ -42,14 +18,19 @@ export const loginValidationSchema = Yup.object().shape({
 });
 
 export const registerValidationSchema = Yup.object().shape({
-  name: Yup.string()
-    .trim('No white spaces at start or end!')
-    .max(255, 'Must be 255 characters or less')
-    .required('Required name'),
+  firstName: Yup.string()
+    .trim()
+    .max(255, 'Имя не длиннее 255 символов')
+    .required('Обязательное поле'),
+  lastName: Yup.string()
+    .trim()
+    .max(255, 'Фамилия не длиннее 255 символов')
+    .required('Обязательное поле'),
 });
 
 export const initialValues = {
-  name: '',
+  firstName: '',
+  lastName: '',
   email: '',
   password: '',
 };
@@ -59,34 +40,41 @@ export const loginFields = [
     name: 'email',
     type: 'email',
     placeholder: 'charles@barkley.com',
-    label: 'Your email',
+    label: 'Email',
     isRequired: true,
   },
   {
     name: 'password',
     type: 'password',
-    placeholder: 'password',
-    label: 'Your password',
+    placeholder: '********',
+    label: 'Пароль',
     isRequired: true,
   },
 ];
 
 export const signUpFields = [
   {
-    name: 'name',
+    name: 'firstName',
     type: 'text',
-    placeholder: 'Tony Soprano',
-    label: 'Your Name',
+    placeholder: 'Tony',
+    label: 'Имя',
+    isRequired: true,
+  },
+  {
+    name: 'lastName',
+    type: 'text',
+    placeholder: 'Soprano',
+    label: 'Фамилия',
     isRequired: true,
   },
   ...loginFields,
 ];
 
 // string constants
-export const REGISTRATION = 'Registration';
-export const LOGIN = 'Login';
-export const SWITCH_TO = 'Switch to ';
-export const SIGN_UP = 'SIGN UP';
+export const REGISTRATION = 'Регистрация';
+export const LOGIN = 'Войти';
+export const SWITCH_TO = 'К ';
+export const SIGN_UP = 'Регистрации';
 
 export const BlueButton = styled(Button)({
   backgroundColor: '#4365C9',

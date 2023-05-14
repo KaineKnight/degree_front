@@ -10,6 +10,20 @@ import {
   Select,
 } from '@mui/material';
 
+import styles from './FormikSelect.module.css';
+
+function makeid(length) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
 function FormikSelect(props) {
   const [field, meta] = useField(props);
   const {
@@ -17,6 +31,19 @@ function FormikSelect(props) {
   } = props;
 
   const displayError = meta.touched && meta.error;
+
+  const optionsJSX = options.map((option) => {
+    const priceAndTime = option?.price ? `${option.price} рублей\t${option.time} часов` : '';
+    return (
+      <MenuItem
+        key={makeid(5)}
+        value={option.id}
+        className={styles.menuItem}
+      >
+        {`${option.title} ${priceAndTime}`}
+      </MenuItem>
+    );
+  });
 
   return (
     <FormControl variant="outlined" fullWidth error={Boolean(displayError)}>
@@ -27,14 +54,10 @@ function FormikSelect(props) {
         name={name}
         {...rest}
       >
-        {options.map((option) => (
-          <MenuItem key={option.value} value={option.id}>
-            {option.title}
-          </MenuItem>
-        ))}
+        {optionsJSX}
       </Select>
       {displayError && (
-        <div className="MuiFormHelperText-root MuiFormHelperText-contained Mui-error">
+        <div className={styles.error}>
           {meta.error}
         </div>
       )}

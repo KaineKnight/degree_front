@@ -1,13 +1,24 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Box, Typography } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
 
-import { QUESTIONS_TEXT, questions } from './constants';
+import { questionsRequest } from '../../redux/actions';
+
+import { QUESTIONS_TEXT } from './constants';
 
 import styles from './Questions.module.css';
 
 function Questions() {
+  const dispatch = useDispatch();
+
+  const questions = useSelector((store) => store.questions.questions);
+
+  useEffect(() => {
+    dispatch(questionsRequest());
+  }, []);
+
   const handleClick = (event) => {
     const question = event.target.parentNode;
     if (question.classList.contains(`${styles.questionBox}`)) question.classList.toggle(`${styles.active}`);
