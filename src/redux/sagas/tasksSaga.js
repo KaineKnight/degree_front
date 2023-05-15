@@ -7,6 +7,8 @@ import {
   createTaskFailure,
   tasksFailure,
   tasksSuccess,
+  moreTasksSuccess,
+  moreTasksFailure,
 } from '../actions';
 
 function* createTaskWorker({ payload }) {
@@ -19,7 +21,7 @@ function* createTaskWorker({ payload }) {
 }
 
 // function* getTasks({ payload: { pageOptions, filterOptions } }) {
-function* getTasksWorker({ payload: pageOptions, filterOptions }) {
+function* getTasksWorker({ payload: { pageOptions, filterOptions } }) {
   try {
     const { data: { data } } = yield call(getTasks, pageOptions, filterOptions);
     // const data = yield call(getTasks);
@@ -29,10 +31,17 @@ function* getTasksWorker({ payload: pageOptions, filterOptions }) {
   }
 }
 
-// function* getMoreTasks() {}
+function* getMoreTasksWorker({ payload: { pageOptions, filterOptions } }) {
+  try {
+    const { data: { data } } = yield call(getTasks, pageOptions, filterOptions);
+    yield put(moreTasksSuccess(data));
+  } catch (error) {
+    yield put(moreTasksFailure(error));
+  }
+}
 
 export default function* createTaskWatcher() {
   yield takeLatest(CREATE_TASK_REQUESTED, createTaskWorker);
   yield takeLatest(TASKS_REQUESTED, getTasksWorker);
-  // yield takeLatest(MORE_TASKS_REQUESTED, getMoreTasks);
+  yield takeLatest(MORE_TASKS_REQUESTED, getMoreTasksWorker);
 }

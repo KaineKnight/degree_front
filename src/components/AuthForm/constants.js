@@ -75,6 +75,7 @@ export const REGISTRATION = 'Регистрация';
 export const LOGIN = 'Войти';
 export const SWITCH_TO = 'К ';
 export const SIGN_UP = 'Регистрации';
+export const TO_LANDING = 'К приветственной странице';
 
 export const BlueButton = styled(Button)({
   backgroundColor: '#4365C9',

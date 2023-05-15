@@ -6,10 +6,10 @@ export const SETTINGS_PAGE = 'Настройки';
 export const PROFILE_PAGE = 'Профиль';
 
 export const sidebarMenu = [
-  HOME_PAGE,
-  TASKS_PAGE,
-  ORDER_PAGE,
-  EMPLOYEES_PAGE,
-  SETTINGS_PAGE,
-  PROFILE_PAGE,
+  { text: HOME_PAGE, page: '/' },
+  { text: TASKS_PAGE, page: '/my-tasks' },
+  { text: ORDER_PAGE, page: '/orders' },
+  { text: EMPLOYEES_PAGE, page: '/users' },
+  { text: SETTINGS_PAGE, page: '/settings' },
+  { text: PROFILE_PAGE, page: '/profile' },
 ];

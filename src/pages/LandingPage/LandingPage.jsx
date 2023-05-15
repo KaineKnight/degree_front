@@ -13,8 +13,6 @@ import {
   Banner,
   WhereToFind,
   Questions,
-  ModalBox,
-  RequestForm,
 } from '../../components';
 
 import styles from './LandingPage.module.css';
@@ -31,9 +29,6 @@ function LandingPage() {
       <Placard />
       <Footer />
 
-      <ModalBox>
-        <RequestForm />
-      </ModalBox>
       <HashLink to="#navbar" smooth>
         <Tooltip
           title="Up"

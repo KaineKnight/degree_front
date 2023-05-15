@@ -11,7 +11,7 @@ const initialState = {
   isLoading: false,
   error: null,
   tasks: [],
-  page: null,
+  // page: null,
 };
 
 export default function tasksReducer(state = initialState, action = {}) {
@@ -29,7 +29,7 @@ export default function tasksReducer(state = initialState, action = {}) {
         isLoading: false,
         error: null,
         tasks: action.payload,
-        page: 1,
+        // page: 1,
       };
     case TASKS_FAILURE:
       return {
@@ -39,15 +39,16 @@ export default function tasksReducer(state = initialState, action = {}) {
         tasks: [],
       };
     case MORE_TASKS_SUCCESS: {
-      const { page } = state;
+      // const { page } = state;
       const { tasks } = state;
-      const pageNumber = action.payload.length ? page + 1 : page;
+      tasks.push(...action.payload);
+      // const pageNumber = action.payload.length ? page + 1 : page;
       return {
         ...state,
         isLoading: false,
         error: null,
-        tasks: tasks.push(...action.payload),
-        page: pageNumber,
+        tasks,
+        // page: pageNumber,
       };
     }
     case MORE_TASKS_FAILURE:

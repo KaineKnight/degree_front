@@ -2,6 +2,7 @@ import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
+import { useNavigate } from 'react-router';
 
 import {
   Alert,
@@ -21,6 +22,7 @@ import {
   REGISTRATION,
   SIGN_UP,
   SWITCH_TO,
+  TO_LANDING,
   initialValues,
   loginFields,
   loginValidationSchema,
@@ -32,6 +34,7 @@ import styles from './AuthForm.module.css';
 
 function AuthForm({ isRegisterButton }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const isLoading = useSelector((store) => store.auth.isLoading);
   const error = useSelector((store) => store.auth.error);
@@ -41,6 +44,7 @@ function AuthForm({ isRegisterButton }) {
   const handleSubmit = (values) => dispatch(authRequest({ values, isRegisterForm }));
 
   const switchFormType = () => setIsRegisterForm(!isRegisterForm);
+  const switchToLanding = () => navigate('/landing');
 
   const formFields = isRegisterForm ? signUpFields : loginFields;
 
@@ -79,9 +83,12 @@ function AuthForm({ isRegisterButton }) {
           >
             {isRegisterForm ? REGISTRATION : LOGIN}
           </BlueButton>
-          <Button sx={{ my: 1 }} type="reset" onClick={switchFormType}>
+          <Button className={styles.subButton} type="reset" onClick={switchFormType}>
             {SWITCH_TO}
             {isRegisterForm ? LOGIN : SIGN_UP}
+          </Button>
+          <Button className={styles.subButton} onClick={switchToLanding}>
+            {TO_LANDING}
           </Button>
         </Form>
       </Formik>

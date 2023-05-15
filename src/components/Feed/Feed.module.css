@@ -1,0 +1,19 @@
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  min-height: 89.6vh;
+}
+.search {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.342);
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  width: 80%;
+}
+.searchPlaceholder {
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.342);
+  width: 100%;
+}

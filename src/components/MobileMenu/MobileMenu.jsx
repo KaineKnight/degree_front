@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 import {
   Article as ArticleIcon,
@@ -32,25 +33,27 @@ import { toggleTheme } from '../../redux/actions';
 
 function MobileMenu() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isDarkTheme = useSelector((store) => store.theme.isDarkTheme);
 
   const switchTheme = () => dispatch(toggleTheme());
+  const switchRoute = (page) => navigate(page);
 
   return (
     <List>
       {sidebarMenu.map(
-        (text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+        (item) => (
+          <ListItem key={item.text} disablePadding>
+            <ListItemButton onClick={() => switchRoute(item.page)}>
               <ListItemIcon>
-                {text === HOME_PAGE && <HomeIcon />}
-                {text === TASKS_PAGE && <ArticleIcon />}
-                {text === ORDER_PAGE && <StoreIcon />}
-                {text === EMPLOYEES_PAGE && <GroupIcon />}
-                {text === SETTINGS_PAGE && <SettingsIcon />}
-                {text === PROFILE_PAGE && <PersonIcon />}
+                {item.text === HOME_PAGE && <HomeIcon />}
+                {item.text === TASKS_PAGE && <ArticleIcon />}
+                {item.text === ORDER_PAGE && <StoreIcon />}
+                {item.text === EMPLOYEES_PAGE && <GroupIcon />}
+                {item.text === SETTINGS_PAGE && <SettingsIcon />}
+                {item.text === PROFILE_PAGE && <PersonIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
         ),

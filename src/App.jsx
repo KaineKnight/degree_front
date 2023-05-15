@@ -32,7 +32,12 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: '/', element: <MainPage /> },
+      { path: '/users', element: <div>users</div> },
       { path: '/users/:id', element: <div>user-page</div> },
+      { path: '/my-tasks', element: <div>my-tasks</div> },
+      { path: '/profile', element: <div>profile</div> },
+      { path: '/settings', element: <div>settings</div> },
+      { path: '/orders', element: <div>orders</div> },
     ],
   },
   { path: '*', element: <div>not found page</div> },

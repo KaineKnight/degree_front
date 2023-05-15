@@ -20,13 +20,17 @@ function Layout() {
   const navigate = useNavigate();
 
   const user = useSelector((store) => store.auth.user);
+  const isLoading = useSelector((store) => store.auth.isLoading);
 
   useEffect(() => {
     const isDarkModeString = getLocalStorageItem(IS_DARK_MODE);
     const isDarkMode = isDarkModeString && JSON.parse(isDarkModeString.toLowerCase());
     if (isDarkMode) dispatch(toggleTheme());
-    if (!user) navigate('/auth');
   }, []);
+
+  useEffect(() => {
+    if (!user && !isLoading) navigate('/auth');
+  }, [user]);
   const isDarkTheme = useSelector((store) => store.theme.isDarkTheme);
 
   const theme = createTheme({
@@ -39,13 +43,17 @@ function Layout() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <Box bgcolor="background.default" color="text.primary">
-        <Stack direction="row" spacing={1.5} justifyContent="space-between">
-          <Sidebar />
-          <Outlet />
-        </Stack>
-      </Box>
+      {!isLoading && user && (
+        <>
+          <Header />
+          <Box bgcolor="background.default" color="text.primary">
+            <Stack direction="row" spacing={1.5} justifyContent="space-between">
+              <Sidebar />
+              <Outlet />
+            </Stack>
+          </Box>
+        </>
+      )}
     </ThemeProvider>
   );
 }

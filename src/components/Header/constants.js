@@ -1,5 +1,6 @@
 export const menuPosition = {
-  vertical: 'top', horizontal: 'right',
+  vertical: 'top',
+  horizontal: 'right',
 };
 
 export const PROFILE_MENU = 'Профиль';
