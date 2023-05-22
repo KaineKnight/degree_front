@@ -6,3 +6,5 @@ export const authBoxStyle = {
   justifyContent: 'center',
   backgroundColor: '#e7f0ff',
 };
+
+export const AUTH_PAGE = 'Авторизация';

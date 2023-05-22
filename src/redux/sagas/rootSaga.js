@@ -19,7 +19,6 @@ function* rootSaga() {
     tasksSaga(),
     placemarksSaga(),
     questionsSaga(),
-  // newsSaga(),
   // userSaga(),
   ]);
 }

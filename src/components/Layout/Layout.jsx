@@ -23,15 +23,15 @@ function Layout() {
   const isLoading = useSelector((store) => store.auth.isLoading);
 
   useEffect(() => {
+    if (!user && !isLoading) navigate('/auth');
+  }, [user]);
+  const isDarkTheme = useSelector((store) => store.theme.isDarkTheme);
+
+  useEffect(() => {
     const isDarkModeString = getLocalStorageItem(IS_DARK_MODE);
     const isDarkMode = isDarkModeString && JSON.parse(isDarkModeString.toLowerCase());
     if (isDarkMode) dispatch(toggleTheme());
   }, []);
-
-  useEffect(() => {
-    if (!user && !isLoading) navigate('/auth');
-  }, [user]);
-  const isDarkTheme = useSelector((store) => store.theme.isDarkTheme);
 
   const theme = createTheme({
     palette: {

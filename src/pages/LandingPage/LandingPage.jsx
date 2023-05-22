@@ -36,7 +36,7 @@ function LandingPage() {
             position: 'fixed',
             bottom: 20,
             right: 10,
-            display: { sm: 'none' },
+            display: { xs: 'none', sm: 'flex' },
           }}
         >
           <Fab color="primary">

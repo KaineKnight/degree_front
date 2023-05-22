@@ -20,11 +20,9 @@ function* createTaskWorker({ payload }) {
   }
 }
 
-// function* getTasks({ payload: { pageOptions, filterOptions } }) {
 function* getTasksWorker({ payload: { pageOptions, filterOptions } }) {
   try {
     const { data: { data } } = yield call(getTasks, pageOptions, filterOptions);
-    // const data = yield call(getTasks);
     yield put(tasksSuccess(data));
   } catch (error) {
     yield put(tasksFailure(error));
@@ -40,7 +38,7 @@ function* getMoreTasksWorker({ payload: { pageOptions, filterOptions } }) {
   }
 }
 
-export default function* createTaskWatcher() {
+export default function* taskWatcher() {
   yield takeLatest(CREATE_TASK_REQUESTED, createTaskWorker);
   yield takeLatest(TASKS_REQUESTED, getTasksWorker);
   yield takeLatest(MORE_TASKS_REQUESTED, getMoreTasksWorker);

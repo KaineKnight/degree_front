@@ -22,6 +22,7 @@ import {
   PROFILE_MENU,
   SETTINGS_MENU,
   TASKS_MENU,
+  TO_LANDING,
   menuPosition,
 } from './constants';
 
@@ -79,6 +80,7 @@ function Header() {
         <MenuItem onClick={() => switchRoute('profile')}>{PROFILE_MENU}</MenuItem>
         <MenuItem onClick={() => switchRoute('my-tasks')}>{TASKS_MENU}</MenuItem>
         <MenuItem onClick={() => switchRoute('settings')}>{SETTINGS_MENU}</MenuItem>
+        <MenuItem onClick={() => switchRoute('landing')}>{TO_LANDING}</MenuItem>
         <MenuItem onClick={handleLogout}>{LOGOUT_MENU}</MenuItem>
       </Menu>
     </AppBar>

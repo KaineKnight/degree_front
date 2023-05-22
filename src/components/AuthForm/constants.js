@@ -7,14 +7,14 @@ import { Button } from '@mui/material';
 export const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
     .trim()
-    .email('Invalid email address')
-    .max(255, 'Must be 255 characters or less')
-    .required('Required email'),
+    .email('Неверный Email')
+    .max(255, '255 сиволов или меньше')
+    .required('Обязательное поле'),
   password: Yup.string()
-    .trim('No white spaces at start or end!')
-    .max(255, 'Must be 255 characters or less')
-    .matches(/^[a-zA-z0-9@$!%*#?&]+$/, 'Must contain only latin characters, numbers and @$!%*#?&')
-    .required('Required password'),
+    .trim()
+    .max(255, '255 символов или меньше')
+    .matches(/^[a-zA-z0-9@$!%*#?&]+$/, 'Только латинские символы, числа и @$!%*#?&')
+    .required('Пароль обязателен'),
 });
 
 export const registerValidationSchema = Yup.object().shape({

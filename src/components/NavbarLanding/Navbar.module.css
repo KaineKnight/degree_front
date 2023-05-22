@@ -68,13 +68,12 @@
   }
   .linksContainer { display: none; }
   .navLink { display: block; }
+  .boxMobileMenu { width: 250px; }
 }
 
 /* sm */
 @media (max-width: 600px) {
   .logo { display: none; }
-  .boxMobileMenu { width: 250px; }
-  
   .desktopRequest { display: none; }
   .mobileRequest { display: block;}
 }

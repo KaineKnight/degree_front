@@ -1,5 +1,6 @@
 import React, { memo, useState } from 'react';
 import { PropTypes } from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Card,
@@ -29,7 +30,6 @@ import {
 
 import styles from './Task.module.css';
 import { ADDITIONAL_INFO } from './constants';
-import { useDispatch, useSelector } from 'react-redux';
 import ModalBox from '../ModalBox';
 import { toggleModal } from '../../redux/actions';
 

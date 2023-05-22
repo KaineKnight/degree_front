@@ -26,7 +26,6 @@ const rootReducer = combineReducers({
   placemarks: placemarksReducer,
   questions: questionsReducer,
   tasks: tasksReducer,
-  // news: newsReducer,
   // user: userReducer,
 });
 
