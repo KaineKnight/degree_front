@@ -28,10 +28,12 @@ import {
 // import DoNotDisturbOffIcon from '@mui/icons-material/DoNotDisturbOff';
 // import HourglassFullIcon from '@mui/icons-material/HourglassFull';
 
-import styles from './Task.module.css';
-import { ADDITIONAL_INFO } from './constants';
-import ModalBox from '../ModalBox';
 import { toggleModal } from '../../redux/actions';
+import ModalBox from '../ModalBox';
+
+import { ADDITIONAL_INFO } from './constants';
+
+import styles from './Task.module.css';
 
 function Task({
   id,

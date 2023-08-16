@@ -1,10 +1,11 @@
+import React, { memo } from 'react';
+
 import {
   Box,
   Divider,
   List,
   Typography,
 } from '@mui/material';
-import React, { memo } from 'react';
 
 function Rightbar() {
   return (
